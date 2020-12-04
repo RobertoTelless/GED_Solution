@@ -17,6 +17,13 @@ namespace DataServices.Repositories
             return query.FirstOrDefault();
         }
 
+        public TIPO_DOCUMENTO CheckExist(TIPO_DOCUMENTO item, Int32? idAss)
+        {
+            IQueryable<TIPO_DOCUMENTO> query = Db.TIPO_DOCUMENTO;
+            query = query.Where(p => p.CADO_NM_NOME == item.CADO_NM_NOME);
+            return query.FirstOrDefault();
+        }
+
         public List<TIPO_DOCUMENTO> GetAllItens(Int32 idAss)
         {
             IQueryable<TIPO_DOCUMENTO> query = Db.TIPO_DOCUMENTO.Where(p => p.CADO_IN_ATIVO == 1);

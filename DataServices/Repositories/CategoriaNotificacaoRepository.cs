@@ -20,6 +20,13 @@ namespace DataServices.Repositories
             return query.FirstOrDefault();
         }
 
+        public CATEGORIA_NOTIFICACAO CheckExist(CATEGORIA_NOTIFICACAO item, Int32? idAss)
+        {
+            IQueryable<CATEGORIA_NOTIFICACAO> query = Db.CATEGORIA_NOTIFICACAO;
+            query = query.Where(p => p.CANO_NM_NOME == item.CANO_NM_NOME);
+            return query.FirstOrDefault();
+        }
+
         public List<CATEGORIA_NOTIFICACAO> GetAllItensAdm(Int32 idAss   )
         {
             IQueryable<CATEGORIA_NOTIFICACAO> query = Db.CATEGORIA_NOTIFICACAO;

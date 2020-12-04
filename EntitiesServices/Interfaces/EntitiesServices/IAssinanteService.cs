@@ -15,6 +15,7 @@ namespace ModelServices.Interfaces.EntitiesServices
         Int32 Edit(ASSINANTE perfil, LOG log);
         Int32 Edit(ASSINANTE perfil);
         Int32 Delete(ASSINANTE perfil, LOG log);
+
         ASSINANTE CheckExist(ASSINANTE conta);
         ASSINANTE GetItemById(Int32 id);
         List<ASSINANTE> GetAllItens();

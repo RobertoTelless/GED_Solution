@@ -17,6 +17,13 @@ namespace DataServices.Repositories
             return query.FirstOrDefault();
         }
 
+        public TIPO_GRUPO CheckExist(TIPO_GRUPO item, Int32? idAss)
+        {
+            IQueryable<TIPO_GRUPO> query = Db.TIPO_GRUPO;
+            query = query.Where(p => p.TIGR_NM_NOME == item.TIGR_NM_NOME);
+            return query.FirstOrDefault();
+        }
+
         public List<TIPO_GRUPO> GetAllItens(Int32 idAss)
         {
             IQueryable<TIPO_GRUPO> query = Db.TIPO_GRUPO.Where(p => p.TIGR_IN_ATIVO == 1);

@@ -17,6 +17,13 @@ namespace DataServices.Repositories
             return query.FirstOrDefault();
         }
 
+        public CATEGORIA_AGENDA CheckExist(CATEGORIA_AGENDA item, Int32? idAss)
+        {
+            IQueryable<CATEGORIA_AGENDA> query = Db.CATEGORIA_AGENDA;
+            query = query.Where(p => p.CAAG_NM_NOME == item.CAAG_NM_NOME);
+            return query.FirstOrDefault();
+        }
+
         public List<CATEGORIA_AGENDA> GetAllItens(Int32 idAss)
         {
             IQueryable<CATEGORIA_AGENDA> query = Db.CATEGORIA_AGENDA.Where(p => p.CAAG_IN_ATIVO == 1);

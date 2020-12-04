@@ -18,6 +18,16 @@ namespace DataServices.Repositories
             return query.FirstOrDefault();
         }
 
+        public DOCUMENTO CheckExist(DOCUMENTO item, Int32? idAss)
+        {
+            IQueryable<DOCUMENTO> query = Db.DOCUMENTO;
+            query = query.Where(p => p.DOCU_NM_NOME == item.DOCU_NM_NOME);
+            query = query.Where(p => p.ASSI_CD_ID == item.ASSI_CD_ID);
+            query = query.Where(p => p.CADO_CD_ID == item.CADO_CD_ID);
+            query = query.Where(p => p.CLAS_CD_ID == item.CLAS_CD_ID);
+            return query.FirstOrDefault();
+        }
+
         public List<DOCUMENTO> GetAllItens(Int32 idAss)
         {
             IQueryable<DOCUMENTO> query = Db.DOCUMENTO.Where(p => p.DOCU_IN_ATIVO == 1);

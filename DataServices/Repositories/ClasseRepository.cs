@@ -18,6 +18,14 @@ namespace DataServices.Repositories
             return query.FirstOrDefault();
         }
 
+        public CLASSE CheckExist(CLASSE item, Int32? idAss)
+        {
+            IQueryable<CLASSE> query = Db.CLASSE;
+            query = query.Where(p => p.CLAS_NM_NOME == item.CLAS_NM_NOME);
+            query = query.Where(p => p.ASSI_CD_ID == item.ASSI_CD_ID);
+            return query.FirstOrDefault();
+        }
+
         public List<CLASSE> GetAllItens(Int32 idAss)
         {
             IQueryable<CLASSE> query = Db.CLASSE.Where(p => p.CLAS_IN_ATIVO == 1);

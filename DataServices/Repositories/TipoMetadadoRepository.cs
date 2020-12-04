@@ -17,6 +17,13 @@ namespace DataServices.Repositories
             return query.FirstOrDefault();
         }
 
+        public TIPO_METADADO CheckExist(TIPO_METADADO item, Int32? idAss)
+        {
+            IQueryable<TIPO_METADADO> query = Db.TIPO_METADADO;
+            query = query.Where(p => p.TIME_NM_NOME == item.TIME_NM_NOME);
+            return query.FirstOrDefault();
+        }
+
         public List<TIPO_METADADO> GetAllItens(Int32 idAss)
         {
             IQueryable<TIPO_METADADO> query = Db.TIPO_METADADO.Where(p => p.TIME_IN_ATIVO == 1);

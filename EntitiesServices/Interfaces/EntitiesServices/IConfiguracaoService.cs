@@ -14,5 +14,6 @@ namespace ModelServices.Interfaces.EntitiesServices
         List<CONFIGURACAO> GetAllItems();
         Int32 Edit(CONFIGURACAO item, LOG log);
         Int32 Create(CONFIGURACAO item);
+        List<CONFIGURACAO_ASSOCIACAO> GetAllAssociacoes(Int32 id);
     }
 }

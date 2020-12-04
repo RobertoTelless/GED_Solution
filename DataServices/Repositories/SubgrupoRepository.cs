@@ -16,7 +16,7 @@ namespace DataServices.Repositories
         public SUBGRUPO CheckExist(SUBGRUPO conta, Int32? idAss)
         {
             IQueryable<SUBGRUPO> query = Db.SUBGRUPO;
-            query = query.Where(p => p.SUBG_NR_NUMERO == conta.SUBG_NR_NUMERO);
+            query = query.Where(p => p.SUBG_NM_NOME == conta.SUBG_NM_NOME);
             query = query.Where(p => p.ASSI_CD_ID == idAss);
             return query.FirstOrDefault();
         }

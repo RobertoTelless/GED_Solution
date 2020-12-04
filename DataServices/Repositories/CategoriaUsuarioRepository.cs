@@ -17,6 +17,13 @@ namespace DataServices.Repositories
             return query.FirstOrDefault();
         }
 
+        public CATEGORIA_USUARIO CheckExist(CATEGORIA_USUARIO item, Int32? idAss)
+        {
+            IQueryable<CATEGORIA_USUARIO> query = Db.CATEGORIA_USUARIO;
+            query = query.Where(p => p.CAUS_NM_NOME == item.CAUS_NM_NOME);
+            return query.FirstOrDefault();
+        }
+
         public List<CATEGORIA_USUARIO> GetAllItens(Int32 idAss)
         {
             IQueryable<CATEGORIA_USUARIO> query = Db.CATEGORIA_USUARIO.Where(p => p.CAUS_IN_ATIVO == 1);

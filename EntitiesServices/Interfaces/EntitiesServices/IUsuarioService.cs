@@ -30,24 +30,12 @@ namespace ModelServices.Interfaces.EntitiesServices
         List<USUARIO> GetAllItensBloqueados(Int32 idAss);
         List<USUARIO> GetAllItensAcessoHoje(Int32 idAss);
         List<USUARIO> ExecuteFilter(Int32? causId, Int32? cargoId, Int32? filiId, String nome, String login, String email, Int32 idAss);
-        TEMPLATE GetTemplateByCode(String codigo);
         USUARIO_ANEXO GetAnexoById(Int32 id);
         List<NOTIFICACAO> GetAllItensUser(Int32 id, Int32 idAss);
         List<NOTIFICACAO> GetNotificacaoNovas(Int32 id, Int32 idAss);
         List<NOTICIA> GetAllNoticias(Int32 idAss);
-        TEMPLATE GetTemplate(String code);
-        USUARIO GetComprador(Int32 idAss);
-        USUARIO GetAprovador(Int32 idAss);
         USUARIO GetAdministrador(Int32 idAss);
         List<UF> GetAllUF();
         List<CATEGORIA_USUARIO> GetAllTipos(Int32 idAss);
-        List<SITUACAO> GetAllSituacao(Int32 idAss);
-
-        USUARIO_REMUNERACAO GetRemuneracaoByUser(Int32 id, DateTime data);
-        USUARIO_CONTRACHEQUE GetContrachequeByUser(Int32 id, DateTime data);
-        USUARIO_REMUNERACAO GetRemuneracaoById(Int32 id);
-        USUARIO_CONTRACHEQUE GetContrachequeById(Int32 id);
-
-        Int32 EditContracheque(USUARIO_CONTRACHEQUE item);
     }
 }

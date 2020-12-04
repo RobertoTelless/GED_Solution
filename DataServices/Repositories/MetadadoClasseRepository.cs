@@ -18,6 +18,14 @@ namespace DataServices.Repositories
             return query.FirstOrDefault();
         }
 
+        public METADADO_CLASSE CheckExist(METADADO_CLASSE conta, Int32? idAss)
+        {
+            IQueryable<METADADO_CLASSE> query = Db.METADADO_CLASSE;
+            query = query.Where(p => p.MECL_NM_NOME == conta.MECL_NM_NOME);
+            query = query.Where(p => p.ASSI_CD_ID == idAss);
+            return query.FirstOrDefault();
+        }
+
         public List<METADADO_CLASSE> GetAllItens(Int32 idAss)
         {
             IQueryable<METADADO_CLASSE> query = Db.METADADO_CLASSE.Where(p => p.MECK_IN_ATIVO == 1);

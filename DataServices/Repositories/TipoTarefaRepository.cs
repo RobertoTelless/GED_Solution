@@ -10,6 +10,13 @@ namespace DataServices.Repositories
 {
     public class TipoTarefaRepository : RepositoryBase<TIPO_TAREFA>, ITipoTarefaRepository
     {
+        public TIPO_TAREFA CheckExist(TIPO_TAREFA item, Int32? idAss)
+        {
+            IQueryable<TIPO_TAREFA> query = Db.TIPO_TAREFA;
+            query = query.Where(p => p.TITR_NM_NOME == item.TITR_NM_NOME);
+            return query.FirstOrDefault();
+        }
+
         public TIPO_TAREFA GetItemById(Int32 id)
         {
             IQueryable<TIPO_TAREFA> query = Db.TIPO_TAREFA;

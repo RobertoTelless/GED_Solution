@@ -18,6 +18,7 @@ namespace ModelServices.Interfaces.EntitiesServices
 
         List<CATEGORIA_AGENDA> GetAllTipos(Int32 idAss);
         AGENDA_ANEXO GetAnexoById(Int32 id);
+        AGENDA_VINCULO GetVinculoById(Int32 id);
 
         List<AGENDA> GetByDate(DateTime data, Int32 idAss);
         List<AGENDA> GetByUser(Int32 id, Int32 idAss);
