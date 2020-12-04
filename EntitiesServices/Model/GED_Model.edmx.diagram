@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d7c8c79c1b554656832edcd01290d84f" Name="Diagram1">
+        <EntityTypeShape EntityType="GEDModel.AGENDA" Width="1.5" PointX="7.5" PointY="34.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.AGENDA_ANEXO" Width="1.5" PointX="9.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.AGENDA_VINCULO" Width="1.5" PointX="15.75" PointY="37.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.ASSINANTE" Width="1.5" PointX="3" PointY="34.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.CATEGORIA_AGENDA" Width="1.5" PointX="5.25" PointY="30.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.CATEGORIA_NOTIFICACAO" Width="1.5" PointX="5.25" PointY="33.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.CATEGORIA_TELEFONE" Width="1.5" PointX="5.25" PointY="36.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.CATEGORIA_USUARIO" Width="1.5" PointX="5.25" PointY="39.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.CLASSE" Width="1.5" PointX="10.25" PointY="41.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.CONFIGURACAO" Width="1.5" PointX="5.25" PointY="46.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.CONFIGURACAO_ASSOCIACAO" Width="1.5" PointX="7.5" PointY="47.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.DOCUMENTO" Width="1.5" PointX="15.75" PointY="42.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.DOCUMENTO_PESQUISA" Width="1.5" PointX="18" PointY="41.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.GRUPO" Width="1.5" PointX="10.5" PointY="46.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.LOG" Width="1.5" PointX="18.75" PointY="37.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.METADADO_CLASSE" Width="1.5" PointX="12.5" PointY="51.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.NOTICIA" Width="1.5" PointX="13.5" PointY="25.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.NOTICIA_COMENTARIO" Width="1.5" PointX="15.75" PointY="33.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.NOTIFICACAO" Width="1.5" PointX="10.5" PointY="35.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.NOTIFICACAO_ANEXO" Width="1.5" PointX="12.75" PointY="30.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.PERFIL" Width="1.5" PointX="11.25" PointY="27.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.SUBGRUPO" Width="1.5" PointX="12.75" PointY="45.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.TAREFA" Width="1.5" PointX="15.75" PointY="49" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.TAREFA_ACOMPANHAMENTO" Width="1.5" PointX="18" PointY="44.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.TAREFA_ANEXO" Width="1.5" PointX="18" PointY="53.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.TAREFA_NOTIFICACAO" Width="1.5" PointX="21" PointY="43.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.TAREFA_VINCULO" Width="1.5" PointX="21" PointY="40.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.TELEFONE" Width="1.5" PointX="7.5" PointY="40.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.TIPO_DOCUMENTO" Width="1.5" PointX="5.25" PointY="54.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.TIPO_GRUPO" Width="1.5" PointX="5.25" PointY="57.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.TIPO_METADADO" Width="1.5" PointX="5.25" PointY="60.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.TIPO_PESSOA" Width="1.5" PointX="0.75" PointY="38.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.TIPO_TAREFA" Width="1.5" PointX="5.25" PointY="63.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.UF" Width="1.5" PointX="0.75" PointY="35" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.USUARIO" Width="1.5" PointX="13.5" PointY="33.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEDModel.USUARIO_ANEXO" Width="1.5" PointX="15.75" PointY="56.375" IsExpanded="true" />
+        <AssociationConnector Association="GEDModel.FK_AGENDA_ANEXO_AGENDA" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_AGENDA_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_AGENDA_CATEGORIA_AGENDA" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_AGENDA_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_AGENDA_USUARIO1" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_AGENDA_VINCULO_AGENDA" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_AGENDA_VINCULO_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_ASSINANTE_TIPO_PESSOA" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_ASSINANTE_UF" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_CATEGORIA_AGENDA_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_CATEGORIA_NOTIFICACAO_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_CATEGORIA_TELEFONE_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_CATEGORIA_USUARIO_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_CLASSE_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_CONFIGURACAO_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_DOCUMENTO_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_GRUPO_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_LOG_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_NOTIFICACAO_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_SUBGRUPO_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_TAREFA_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_TELEFONE_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_TIPO_DOCUMENTO_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_TIPO_GRUPO_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_TIPO_METADADO_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_TIPO_TAREFA_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_USUARIO_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_NOTIFICACAO_CATEGORIA_NOTIFICACAO" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_TELEFONE_CATEGORIA_TELEFONE" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_USUARIO_CATEGORIA_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_CLASSE_SUBGRUPO" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_DOCUMENTO_CLASSE" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_METADADO_CLASSE_CLASSE" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_CONFIGURACAO_ASSOCIACAO_CONFIGURACAO" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_DOCUMENTO_PESQUISA_DOCUMENTO" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_DOCUMENTO_TIPO_DOCUMENTO" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_DOCUMENTO_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_DOCUMENTO_PESQUISA_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_GRUPO_TIPO_GRUPO" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_SUBGRUPO_GRUPO" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_LOG_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_METADADO_CLASSE_TIPO_METADADO" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_NOTICIA_COMENTARIO_NOTICIA" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_NOTICIA_COMENTARIO_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_NOTIFICACAO_ANEXO_NOTIFICACAO" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_NOTIFICACAO_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_USUARIO_PERFIL" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_TAREFA_ACOMPANHAMENTO_TAREFA" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_TAREFA_ANEXO_TAREFA" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_TAREFA_NOTIFICACAO_TAREFA" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_TAREFA_TIPO_TAREFA" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_TAREFA_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_TAREFA_VINCULO_TAREFA" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_TAREFA_ACOMPANHAMENTO_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_TAREFA_NOTIFICACAO_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_TAREFA_VINCULO_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="GEDModel.FK_USUARIO_ANEXO_USUARIO" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
