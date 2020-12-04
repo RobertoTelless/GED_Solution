@@ -21,7 +21,7 @@ namespace ModelServices.EntitiesServices
         private readonly ITelefoneRepository _baseRepository;
         private readonly ILogRepository _logRepository;
         private readonly ICategoriaTelefoneRepository _catRepository;
-        protected Odonto_DBEntities Db = new Odonto_DBEntities();
+        protected GEDEntities Db = new GEDEntities();
 
         public TelefoneService(ITelefoneRepository baseRepository, ILogRepository logRepository, ICategoriaTelefoneRepository catRepository) : base(baseRepository)
         {

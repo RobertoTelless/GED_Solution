@@ -20,12 +20,14 @@ namespace ModelServices.EntitiesServices
     {
         private readonly IConfiguracaoRepository _baseRepository;
         private readonly ILogRepository _logRepository;
-        protected Odonto_DBEntities Db = new Odonto_DBEntities();
+        private readonly IConfiguracaoAssociacaoRepository _assRepository;
+        protected GEDEntities Db = new GEDEntities();
 
-        public ConfiguracaoService(IConfiguracaoRepository baseRepository, ILogRepository logRepository) : base(baseRepository)
+        public ConfiguracaoService(IConfiguracaoRepository baseRepository, ILogRepository logRepository, IConfiguracaoAssociacaoRepository assRepository) : base(baseRepository)
         {
             _baseRepository = baseRepository;
             _logRepository = logRepository;
+            _assRepository = assRepository;
         }
 
         public CONFIGURACAO GetItemById(Int32 id)
@@ -37,6 +39,12 @@ namespace ModelServices.EntitiesServices
         public List<CONFIGURACAO> GetAllItems()
         {
             List<CONFIGURACAO> item = _baseRepository.GetAllItems();
+            return item;
+        }
+
+        public List<CONFIGURACAO_ASSOCIACAO> GetAllAssociacoes(Int32 id)
+        {
+            List<CONFIGURACAO_ASSOCIACAO> item = _assRepository.GetAllItens(id);
             return item;
         }
 

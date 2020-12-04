@@ -21,5 +21,7 @@ namespace ModelServices.Interfaces.EntitiesServices
         List<METADADO_CLASSE> GetAllItens(Int32 idAss);
         List<METADADO_CLASSE> GetAllItensAdm(Int32 idAss);
         List<TIPO_METADADO> GetAllTipos(Int32 idAss);
+        List<CLASSE> GetAllClasses(Int32 idAss);
+
     }
 }

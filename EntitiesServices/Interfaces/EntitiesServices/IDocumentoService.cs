@@ -22,5 +22,7 @@ namespace ModelServices.Interfaces.EntitiesServices
         List<DOCUMENTO> GetAllItensAdm(Int32 idAss);
         List<DOCUMENTO> ExecuteFilter(Int32? classe, Int32? idCat, Int32? idUsuario, String nome, DateTime? data, Int32? idFormato, String descricao, String ocr, Int32 idAss);
         List<TIPO_DOCUMENTO> GetAllTipos(Int32 idAss);
+        List<CLASSE> GetAllClasses(Int32 idAss);
+        List<USUARIO> GetAllUsuarios(Int32 idAss);
     }
 }

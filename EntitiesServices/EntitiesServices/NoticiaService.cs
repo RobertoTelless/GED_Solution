@@ -21,17 +21,13 @@ namespace ModelServices.EntitiesServices
         private readonly INoticiaRepository _baseRepository;
         private readonly ILogRepository _logRepository;
         private readonly INoticiaComentarioRepository _comRepository;
-        private readonly ITipoTagRepository _ttgRepository;
-        private readonly INoticiaTagRepository _tagRepository;
-        protected Odonto_DBEntities Db = new Odonto_DBEntities();
+        protected GEDEntities Db = new GEDEntities();
 
-        public NoticiaService(INoticiaRepository baseRepository, ILogRepository logRepository, INoticiaComentarioRepository comRepository, ITipoTagRepository ttgRepository, INoticiaTagRepository tagRepository) : base(baseRepository)
+        public NoticiaService(INoticiaRepository baseRepository, ILogRepository logRepository, INoticiaComentarioRepository comRepository) : base(baseRepository)
         {
             _baseRepository = baseRepository;
             _logRepository = logRepository;
             _comRepository = comRepository;
-            _ttgRepository = ttgRepository;
-            _tagRepository = tagRepository;
         }
 
         public NOTICIA GetItemById(Int32 id)
@@ -48,11 +44,6 @@ namespace ModelServices.EntitiesServices
         public List<NOTICIA> GetAllItensAdm(Int32 idAss)
         {
             return _baseRepository.GetAllItensAdm(idAss);
-        }
-
-        public List<TIPO_TAG> GetAllTiposTag(Int32 idAss)
-        {
-            return _ttgRepository.GetAllItens(idAss);
         }
 
         public List<NOTICIA> GetAllItensValidos(Int32 idAss)
@@ -168,24 +159,5 @@ namespace ModelServices.EntitiesServices
                 }
             }
         }
-
-        public Int32 CreateTag(NOTICIA_TAG item)
-        {
-            using (DbContextTransaction transaction = Db.Database.BeginTransaction(IsolationLevel.ReadCommitted))
-            {
-                try
-                {
-                    _tagRepository.Add(item);
-                    transaction.Commit();
-                    return 0;
-                }
-                catch (Exception ex)
-                {
-                    transaction.Rollback();
-                    throw ex;
-                }
-            }
-        }
-
     }
 }

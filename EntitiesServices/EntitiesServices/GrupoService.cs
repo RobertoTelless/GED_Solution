@@ -20,7 +20,7 @@ namespace ModelServices.EntitiesServices
     {
         private readonly IGrupoRepository _baseRepository;
         private readonly ILogRepository _logRepository;
-        protected Odonto_DBEntities Db = new Odonto_DBEntities();
+        protected GEDEntities Db = new GEDEntities();
 
         public GrupoService(IGrupoRepository baseRepository, ILogRepository logRepository) : base(baseRepository)
         {

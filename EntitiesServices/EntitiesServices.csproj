@@ -167,6 +167,14 @@
     <Compile Include="Attributes\DataAnteriorAttribute.cs" />
     <Compile Include="EntitiesServices\AgendaService.cs" />
     <Compile Include="EntitiesServices\AssinanteService.cs" />
+    <Compile Include="EntitiesServices\TipoMetadadoService.cs" />
+    <Compile Include="EntitiesServices\TipoGrupoService.cs" />
+    <Compile Include="EntitiesServices\TipoDocumentoService.cs" />
+    <Compile Include="EntitiesServices\CategoriaUsuarioService.cs" />
+    <Compile Include="EntitiesServices\CategoriaTelefoneService.cs" />
+    <Compile Include="EntitiesServices\CategoriaNotificacaoService.cs" />
+    <Compile Include="EntitiesServices\MetadadoClasseService.cs" />
+    <Compile Include="EntitiesServices\DocumentoService.cs" />
     <Compile Include="EntitiesServices\ConfiguracaoService.cs" />
     <Compile Include="EntitiesServices\GrupoService.cs" />
     <Compile Include="EntitiesServices\LogService.cs" />
@@ -176,8 +184,10 @@
     <Compile Include="EntitiesServices\ServiceBase.cs" />
     <Compile Include="EntitiesServices\SubgrupoService.cs" />
     <Compile Include="EntitiesServices\TarefaService.cs" />
+    <Compile Include="EntitiesServices\ClasseService.cs" />
     <Compile Include="EntitiesServices\TelefoneService.cs" />
     <Compile Include="EntitiesServices\TemplateService.cs" />
+    <Compile Include="EntitiesServices\CategoriaAgendaService.cs" />
     <Compile Include="EntitiesServices\TipoPessoaService.cs" />
     <Compile Include="EntitiesServices\TipoTagService.cs" />
     <Compile Include="EntitiesServices\UsuarioService.cs" />
@@ -385,7 +395,12 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CrossCutting\CrossCutting.csproj">
+      <Project>{fde07401-22a9-454c-b066-5ce588b8474d}</Project>
+      <Name>CrossCutting</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Model\GED_Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

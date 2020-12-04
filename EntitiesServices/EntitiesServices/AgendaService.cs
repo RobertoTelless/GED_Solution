@@ -22,16 +22,17 @@ namespace ModelServices.EntitiesServices
         private readonly ILogRepository _logRepository;
         private readonly ICategoriaAgendaRepository _tipoRepository;
         private readonly IAgendaAnexoRepository _anexoRepository;
+        private readonly IAgendaVinculoRepository _vincRepository;
 
-        protected Odonto_DBEntities Db = new Odonto_DBEntities();
+        protected GEDEntities Db = new GEDEntities();
 
-        public AgendaService(IAgendaRepository baseRepository, ILogRepository logRepository, ICategoriaAgendaRepository tipoRepository, IAgendaAnexoRepository anexoRepository) : base(baseRepository)
+        public AgendaService(IAgendaRepository baseRepository, ILogRepository logRepository, ICategoriaAgendaRepository tipoRepository, IAgendaAnexoRepository anexoRepository, IAgendaVinculoRepository vincRepository) : base(baseRepository)
         {
             _baseRepository = baseRepository;
             _logRepository = logRepository;
             _tipoRepository = tipoRepository;
             _anexoRepository = anexoRepository;
-
+            _vincRepository = vincRepository;
         }
 
         public List<AGENDA> GetByDate(DateTime data, Int32 idAss)
@@ -71,6 +72,11 @@ namespace ModelServices.EntitiesServices
         public AGENDA_ANEXO GetAnexoById(Int32 id)
         {
             return _anexoRepository.GetItemById(id);
+        }
+
+        public AGENDA_VINCULO GetVinculoById(Int32 id)
+        {
+            return _vincRepository.GetItemById(id);
         }
 
         public List<CATEGORIA_AGENDA> GetAllTipos(Int32 idAss)

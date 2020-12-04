@@ -21,7 +21,7 @@ namespace ModelServices.EntitiesServices
         private readonly ISubgrupoRepository _baseRepository;
         private readonly IGrupoRepository _gruRepository;
         private readonly ILogRepository _logRepository;
-        protected Odonto_DBEntities Db = new Odonto_DBEntities();
+        protected GEDEntities Db = new GEDEntities();
 
         public SubgrupoService(ISubgrupoRepository baseRepository, ILogRepository logRepository, IGrupoRepository gruRepository) : base(baseRepository)
         {

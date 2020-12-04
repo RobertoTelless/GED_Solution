@@ -16,48 +16,54 @@ using System.Data;
 
 namespace ModelServices.EntitiesServices
 {
-    public class AssinanteService : ServiceBase<ASSINANTE>, IAssinanteService
+    public class ClasseService : ServiceBase<CLASSE>, IClasseService
     {
-        private readonly IAssinanteRepository _baseRepository;
+        private readonly IClasseRepository _baseRepository;
         private readonly ILogRepository _logRepository;
+        private readonly ISubgrupoRepository _subRepository;
         protected GEDEntities Db = new GEDEntities();
 
-        public AssinanteService(IAssinanteRepository baseRepository, ILogRepository logRepository) : base(baseRepository)
+        public ClasseService(IClasseRepository baseRepository, ILogRepository logRepository, ISubgrupoRepository subRepository) : base(baseRepository)
         {
             _baseRepository = baseRepository;
             _logRepository = logRepository;
-
+            _subRepository = subRepository;
         }
 
-        public ASSINANTE CheckExist(ASSINANTE conta)
+        public CLASSE CheckExist(CLASSE item, Int32? idAss)
         {
-            ASSINANTE item = _baseRepository.CheckExist(conta);
+            CLASSE volta = _baseRepository.CheckExist(item, idAss);
+            return volta;
+        }
+
+        public CLASSE GetItemById(Int32 id)
+        {
+            CLASSE item = _baseRepository.GetItemById(id);
             return item;
         }
 
-        public ASSINANTE GetItemById(Int32 id)
+        public List<CLASSE> GetAllItens(Int32 idAss)
         {
-            ASSINANTE item = _baseRepository.GetItemById(id);
-            return item;
+            return _baseRepository.GetAllItens(idAss);
         }
 
-        public List<ASSINANTE> GetAllItens()
+        public List<CLASSE> GetAllItensAdm(Int32 idAss)
         {
-            return _baseRepository.GetAllItens();
+            return _baseRepository.GetAllItensAdm(idAss);
         }
 
-        public List<ASSINANTE> GetAllItensAdm()
+        public List<SUBGRUPO> GetAllSubgrupos(Int32 idAss)
         {
-            return _baseRepository.GetAllItensAdm();
+            return _subRepository.GetAllItens(idAss);
         }
 
-        public List<ASSINANTE> ExecuteFilter(Int32 tipo, String nome)
+        public List<CLASSE> ExecuteFilter(Int32? subgrupo, String nome, String descricao, String sigla, Int32 idAss)
         {
-            List<ASSINANTE> lista = _baseRepository.ExecuteFilter(tipo, nome);
-            return lista;
+            return _baseRepository.ExecuteFilter(subgrupo, nome, descricao, sigla, idAss);
+
         }
 
-        public Int32 Create(ASSINANTE item, LOG log)
+        public Int32 Create(CLASSE item, LOG log)
         {
             using (DbContextTransaction transaction = Db.Database.BeginTransaction(IsolationLevel.ReadCommitted))
             {
@@ -76,7 +82,7 @@ namespace ModelServices.EntitiesServices
             }
         }
 
-        public Int32 Create(ASSINANTE item)
+        public Int32 Create(CLASSE item)
         {
             using (DbContextTransaction transaction = Db.Database.BeginTransaction(IsolationLevel.ReadCommitted))
             {
@@ -95,13 +101,13 @@ namespace ModelServices.EntitiesServices
         }
 
 
-        public Int32 Edit(ASSINANTE item, LOG log)
+        public Int32 Edit(CLASSE item, LOG log)
         {
             using (DbContextTransaction transaction = Db.Database.BeginTransaction(IsolationLevel.ReadCommitted))
             {
                 try
                 {
-                    ASSINANTE obj = _baseRepository.GetById(item.ASSI_CD_ID);
+                    CLASSE obj = _baseRepository.GetById(item.CLAS_CD_ID);
                     _baseRepository.Detach(obj);
                     _logRepository.Add(log);
                     _baseRepository.Update(item);
@@ -116,13 +122,13 @@ namespace ModelServices.EntitiesServices
             }
         }
 
-        public Int32 Edit(ASSINANTE item)
+        public Int32 Edit(CLASSE item)
         {
             using (DbContextTransaction transaction = Db.Database.BeginTransaction(IsolationLevel.ReadCommitted))
             {
                 try
                 {
-                    ASSINANTE obj = _baseRepository.GetById(item.ASSI_CD_ID);
+                    CLASSE obj = _baseRepository.GetById(item.CLAS_CD_ID);
                     _baseRepository.Detach(obj);
                     _baseRepository.Update(item);
                     transaction.Commit();
@@ -136,7 +142,7 @@ namespace ModelServices.EntitiesServices
             }
         }
 
-        public Int32 Delete(ASSINANTE item, LOG log)
+        public Int32 Delete(CLASSE item, LOG log)
         {
             using (DbContextTransaction transaction = Db.Database.BeginTransaction(IsolationLevel.ReadCommitted))
             {

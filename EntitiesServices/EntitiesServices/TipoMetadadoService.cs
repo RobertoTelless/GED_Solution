@@ -16,48 +16,41 @@ using System.Data;
 
 namespace ModelServices.EntitiesServices
 {
-    public class AssinanteService : ServiceBase<ASSINANTE>, IAssinanteService
+    public class TipoMetadadoService : ServiceBase<TIPO_METADADO>, ITipoMetadadoService
     {
-        private readonly IAssinanteRepository _baseRepository;
+        private readonly ITipoMetadadoRepository _baseRepository;
         private readonly ILogRepository _logRepository;
         protected GEDEntities Db = new GEDEntities();
 
-        public AssinanteService(IAssinanteRepository baseRepository, ILogRepository logRepository) : base(baseRepository)
+        public TipoMetadadoService(ITipoMetadadoRepository baseRepository, ILogRepository logRepository) : base(baseRepository)
         {
             _baseRepository = baseRepository;
             _logRepository = logRepository;
-
         }
 
-        public ASSINANTE CheckExist(ASSINANTE conta)
+        public TIPO_METADADO GetItemById(Int32 id)
         {
-            ASSINANTE item = _baseRepository.CheckExist(conta);
+            TIPO_METADADO item = _baseRepository.GetItemById(id);
             return item;
         }
 
-        public ASSINANTE GetItemById(Int32 id)
+        public TIPO_METADADO CheckExist(TIPO_METADADO item, Int32? idAss)
         {
-            ASSINANTE item = _baseRepository.GetItemById(id);
-            return item;
+            TIPO_METADADO volta = _baseRepository.CheckExist(item, idAss);
+            return volta;
         }
 
-        public List<ASSINANTE> GetAllItens()
+        public List<TIPO_METADADO> GetAllItens(Int32? id)
         {
-            return _baseRepository.GetAllItens();
+            return _baseRepository.GetAllItens(id.Value);
         }
 
-        public List<ASSINANTE> GetAllItensAdm()
+        public List<TIPO_METADADO> GetAllItensAdm(Int32? id)
         {
-            return _baseRepository.GetAllItensAdm();
+            return _baseRepository.GetAllItensAdm(id.Value);
         }
-
-        public List<ASSINANTE> ExecuteFilter(Int32 tipo, String nome)
-        {
-            List<ASSINANTE> lista = _baseRepository.ExecuteFilter(tipo, nome);
-            return lista;
-        }
-
-        public Int32 Create(ASSINANTE item, LOG log)
+    
+        public Int32 Create(TIPO_METADADO item, LOG log)
         {
             using (DbContextTransaction transaction = Db.Database.BeginTransaction(IsolationLevel.ReadCommitted))
             {
@@ -76,7 +69,7 @@ namespace ModelServices.EntitiesServices
             }
         }
 
-        public Int32 Create(ASSINANTE item)
+        public Int32 Create(TIPO_METADADO item)
         {
             using (DbContextTransaction transaction = Db.Database.BeginTransaction(IsolationLevel.ReadCommitted))
             {
@@ -95,13 +88,13 @@ namespace ModelServices.EntitiesServices
         }
 
 
-        public Int32 Edit(ASSINANTE item, LOG log)
+        public Int32 Edit(TIPO_METADADO item, LOG log)
         {
             using (DbContextTransaction transaction = Db.Database.BeginTransaction(IsolationLevel.ReadCommitted))
             {
                 try
                 {
-                    ASSINANTE obj = _baseRepository.GetById(item.ASSI_CD_ID);
+                    TIPO_METADADO obj = _baseRepository.GetById(item.TIME_CD_ID);
                     _baseRepository.Detach(obj);
                     _logRepository.Add(log);
                     _baseRepository.Update(item);
@@ -116,13 +109,13 @@ namespace ModelServices.EntitiesServices
             }
         }
 
-        public Int32 Edit(ASSINANTE item)
+        public Int32 Edit(TIPO_METADADO item)
         {
             using (DbContextTransaction transaction = Db.Database.BeginTransaction(IsolationLevel.ReadCommitted))
             {
                 try
                 {
-                    ASSINANTE obj = _baseRepository.GetById(item.ASSI_CD_ID);
+                    TIPO_METADADO obj = _baseRepository.GetById(item.TIME_CD_ID);
                     _baseRepository.Detach(obj);
                     _baseRepository.Update(item);
                     transaction.Commit();
@@ -136,7 +129,7 @@ namespace ModelServices.EntitiesServices
             }
         }
 
-        public Int32 Delete(ASSINANTE item, LOG log)
+        public Int32 Delete(TIPO_METADADO item, LOG log)
         {
             using (DbContextTransaction transaction = Db.Database.BeginTransaction(IsolationLevel.ReadCommitted))
             {
@@ -154,5 +147,6 @@ namespace ModelServices.EntitiesServices
                 }
             }
         }
+
     }
 }
