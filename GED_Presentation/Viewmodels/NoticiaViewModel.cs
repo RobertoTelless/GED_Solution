@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using EntitiesServices.Model;
 
-namespace OdontoWeb.ViewModels
+namespace Ged.ViewModels
 {
     public class NoticiaViewModel
     {
@@ -19,10 +19,10 @@ namespace OdontoWeb.ViewModels
         [DataType(DataType.Date, ErrorMessage = "DATA DE VALIDADE Deve ser uma data válida")]
         public System.DateTime NOTC_DT_VALIDADE { get; set; }
         [Required(ErrorMessage = "Campo TÍTULO obrigatorio")]
-        [StringLength(50, MinimumLength = 1, ErrorMessage = "O TÍTULO deve ter no minimo 1 caractere e no máximo 250.")]
+        [StringLength(500, MinimumLength = 1, ErrorMessage = "O TÍTULO deve ter no minimo 1 e no máximo 500 caracteres.")]
         public string NOTC_NM_TITULO { get; set; }
         [Required(ErrorMessage = "Campo AUTOR obrigatorio")]
-        [StringLength(50, MinimumLength = 1, ErrorMessage = "O AUTOR deve ter no minimo 1 caractere e no máximo 50.")]
+        [StringLength(500, MinimumLength = 1, ErrorMessage = "O AUTOR deve ter no minimo 1 e no máximo 500 caracteres.")]
         public string NOTC_NM_AUTOR { get; set; }
         [Required(ErrorMessage = "Campo DATA DE AUTORIA obrigatorio")]
         [DataType(DataType.Date, ErrorMessage = "DATA DE AUTORIA Deve ser uma data válida")]
@@ -30,7 +30,7 @@ namespace OdontoWeb.ViewModels
         public string NOTC_TX_TEXTO { get; set; }
         [StringLength(250, ErrorMessage = "O NOME DO ARQUIVO deve ter máximo 250 caracteres.")]
         public string NOTC_AQ_AQRUIVO { get; set; }
-        [StringLength(250, ErrorMessage = "O NOME DO LINK deve ter máximo 250 caracteres.")]
+        [StringLength(550, ErrorMessage = "O NOME DO LINK deve ter máximo 550 caracteres.")]
         public string NOTC_LK_LINK { get; set; }
         public int NOTC_NR_ACESSO { get; set; }
         public int NOTC_IN_ATIVO { get; set; }
@@ -38,8 +38,6 @@ namespace OdontoWeb.ViewModels
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NOTICIA_COMENTARIO> NOTICIA_COMENTARIO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NOTICIA_TAG> NOTICIA_TAG { get; set; }
 
     }
 }

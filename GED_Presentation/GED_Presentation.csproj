@@ -242,8 +242,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Viewmodels\AgendaViewModel.cs" />
     <Compile Include="Viewmodels\AssinanteViewModel.cs" />
+    <Compile Include="Viewmodels\TipoMetadadoViewModel.cs" />
+    <Compile Include="Viewmodels\TipoGrupoViewModel.cs" />
+    <Compile Include="Viewmodels\TipoDocumentoViewModel.cs" />
+    <Compile Include="Viewmodels\CategoriaUsuarioViewModel.cs" />
+    <Compile Include="Viewmodels\CategoriaTelefoneViewModel.cs" />
+    <Compile Include="Viewmodels\CategoriaNotificacaoViewModel.cs" />
     <Compile Include="Viewmodels\CategoriaAgendaViewModel.cs" />
+    <Compile Include="Viewmodels\MetadadoClasseViewModel.cs" />
     <Compile Include="Viewmodels\ConfiguracaoViewModel.cs" />
+    <Compile Include="Viewmodels\ClasseViewModel.cs" />
     <Compile Include="Viewmodels\GrupoViewModel.cs" />
     <Compile Include="Viewmodels\LogViewModel.cs" />
     <Compile Include="Viewmodels\NoticiaComentarioViewModel.cs" />
@@ -2445,6 +2453,17 @@
     <Content Include="Scripts\plugins\diff_match_patch\COPYING" />
     <Content Include="Scripts\plugins\justified-gallery\README.md" />
     <Content Include="Scripts\plugins\topojson\LICENSE" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_Layout_Admin.cshtml" />
+    <Content Include="Views\Shared\_Navigation.cshtml" />
+    <Content Include="Views\Shared\_Navigation_Admin.cshtml" />
+    <Content Include="Views\Shared\_RightSidebar.cshtml" />
+    <Content Include="Views\Shared\_RightSidebar_Admin.cshtml" />
+    <Content Include="Views\Shared\_SkinConfig.cshtml" />
+    <Content Include="Views\Shared\_TopNavbar.cshtml" />
+    <Content Include="Views\Shared\_TopNavbar2.cshtml" />
+    <Content Include="Views\Shared\_TopNavbar_Admin.cshtml" />
+    <Content Include="Views\Shared\_TopNavbar_Admin_Y.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2471,6 +2490,24 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ApplicationServices\ApplicationServices.csproj">
+      <Project>{09bac18f-bab6-4255-b909-8b99c6a4ef2e}</Project>
+      <Name>ApplicationServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CrossCutting\CrossCutting.csproj">
+      <Project>{fde07401-22a9-454c-b066-5ce588b8474d}</Project>
+      <Name>CrossCutting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataServices\DataServices.csproj">
+      <Project>{144b1e91-d79b-4a83-9e33-0ed3ceae595e}</Project>
+      <Name>DataServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EntitiesServices\EntitiesServices.csproj">
+      <Project>{a687226d-016b-4dd3-a746-fa1669e7ae75}</Project>
+      <Name>EntitiesServices</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

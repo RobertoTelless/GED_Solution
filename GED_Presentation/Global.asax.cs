@@ -7,7 +7,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using MvcMapping.Mappers;
 
-namespace OdontoWeb
+namespace Ged
 {
     public class MvcApplication : System.Web.HttpApplication
     {

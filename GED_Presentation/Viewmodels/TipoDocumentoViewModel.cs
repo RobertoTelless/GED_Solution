@@ -8,18 +8,19 @@ using EntitiesServices.Attributes;
 
 namespace Ged.ViewModels
 {
-    public class CategoriaAgendaViewModel
+    public class TipoDocumentoViewModel
     {
         [Key]
-        public int CAAG_CD_ID { get; set; }
+        public int CADO_CD_ID { get; set; }
         public int ASSI_CD_ID { get; set; }
         [Required(ErrorMessage = "Campo NOME obrigatorio")]
         [StringLength(50, MinimumLength = 1, ErrorMessage = "O NOME deve conter no minimo 1 e no máximo 50 caracteres.")]
-        public string CAAG_NM_NOME { get; set; }
-        public Nullable<int> CAAG_IN_ATIVO { get; set; }
+        public string CADO_NM_NOME { get; set; }
+        public int CADO_IN_ATIVO { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AGENDA> AGENDA { get; set; }
         public virtual ASSINANTE ASSINANTE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DOCUMENTO> DOCUMENTO { get; set; }
+
     }
 }

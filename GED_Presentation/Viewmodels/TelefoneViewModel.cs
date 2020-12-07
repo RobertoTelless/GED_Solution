@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using EntitiesServices.Model;
 
-namespace OdontoWeb.ViewModels
+namespace Ged.ViewModels
 {
     public class TelefoneViewModel
     {
@@ -15,7 +15,7 @@ namespace OdontoWeb.ViewModels
         [Required(ErrorMessage = "Campo CATEGORIA obrigatorio")]
         public Nullable<int> CATE_CD_ID { get; set; }
         [Required(ErrorMessage = "Campo NOME obrigatorio")]
-        [StringLength(50, MinimumLength = 1, ErrorMessage = "O NOME deve ter no minimo 1 caractere e no máximo 50.")]
+        [StringLength(50, MinimumLength = 1, ErrorMessage = "O NOME deve ter no minimo 1 e no máximo 50 caracteres.")]
         public string TELE_NM_NOME { get; set; }
         [StringLength(50, ErrorMessage = "O TELEFONE deve ter no máximo 50 caracteres.")]
         public string TELE_NR_TELEFONE { get; set; }

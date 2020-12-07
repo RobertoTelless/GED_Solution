@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using EntitiesServices.Model;
 
-namespace OdontoWeb.ViewModels
+namespace Ged.ViewModels
 {
     public class UsuarioLoginViewModel
     {
@@ -138,8 +138,6 @@ namespace OdontoWeb.ViewModels
 
 
         public virtual ASSINANTE ASSINANTE { get; set; }
-        public virtual CARGO CARGO { get; set; }
-        public virtual FILIAL FILIAL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LOG> LOG { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

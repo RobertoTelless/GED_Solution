@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using EntitiesServices.Model;
 
-namespace OdontoWeb.ViewModels
+namespace Ged.ViewModels
 {
     public class TemplateViewModel
     {
@@ -26,6 +26,7 @@ namespace OdontoWeb.ViewModels
         public string TEMP_TX_CABECALHO { get; set; }
         public string TEMP_TX_CORPO { get; set; }
         public string TEMP_TX_DADOS { get; set; }
+        [DataType(DataType.Date, ErrorMessage = "Deve ser uma data válida")]
         public Nullable<System.DateTime> TEMP_DT_CRIACAO { get; set; }
 
         public virtual ASSINANTE ASSINANTE { get; set; }

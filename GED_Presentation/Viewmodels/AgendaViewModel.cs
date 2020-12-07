@@ -6,7 +6,7 @@ using EntitiesServices.Model;
 using System.Web;
 using EntitiesServices.Attributes;
 
-namespace OdontoWeb.ViewModels
+namespace Ged.ViewModels
 {
     public class AgendaViewModel
     {

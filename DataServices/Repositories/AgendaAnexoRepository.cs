@@ -11,16 +11,16 @@ using System.Data.Entity;
 
 namespace DataServices.Repositories
 {
-    public class AgendaAnexoRepository : RepositoryBase<AGENDA_VINCULO>, IAgendaVinculoRepository
+    public class AgendaAnexoRepository : RepositoryBase<AGENDA_ANEXO>, IAgendaAnexoRepository
     {
-        public List<AGENDA_VINCULO> GetAllItens()
+        public List<AGENDA_ANEXO> GetAllItens()
         {
-            return Db.AGENDA_VINCULO.ToList();
+            return Db.AGENDA_ANEXO.ToList();
         }
 
-        public AGENDA_VINCULO GetItemById(Int32 id)
+        public AGENDA_ANEXO GetItemById(Int32 id)
         {
-            IQueryable<AGENDA_VINCULO> query = Db.AGENDA_VINCULO.Where(p => p.AGVI_CD_ID == id);
+            IQueryable<AGENDA_ANEXO> query = Db.AGENDA_ANEXO.Where(p => p.AGAN_CD_ID == id);
             return query.FirstOrDefault();
         }
     }

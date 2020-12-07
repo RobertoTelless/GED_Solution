@@ -5,13 +5,14 @@ using System.Linq;
 using System.Web;
 using EntitiesServices.Model;
 
-namespace OdontoWeb.ViewModels
+namespace Ged.ViewModels
 {
     public class SubgrupoViewModel
     {
         [Key]
         public int SUBG_CD_ID { get; set; }
         public int ASSI_CD_ID { get; set; }
+        [Required(ErrorMessage = "Campo GRUPO obrigatorio")]
         public Nullable<int> GRUP_CD_ID { get; set; }
         [Required(ErrorMessage = "Campo NOME obrigatorio")]
         [StringLength(50, MinimumLength = 1, ErrorMessage = "O NOME deve ter no minimo 1 caractere e no máximo 50.")]
@@ -24,7 +25,7 @@ namespace OdontoWeb.ViewModels
 
         public virtual ASSINANTE ASSINANTE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CENTRO_CUSTO> CENTRO_CUSTO { get; set; }
+        public virtual ICollection<CLASSE> CLASSE { get; set; }
         public virtual GRUPO GRUPO { get; set; }
     }
 }

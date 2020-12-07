@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using AutoMapper;
 using EntitiesServices.Model;
-using OdontoWeb.ViewModels;
+using Ged.ViewModels;
 
 namespace MvcMapping.Mappers
 {
@@ -16,16 +16,10 @@ namespace MvcMapping.Mappers
             CreateMap<USUARIO, UsuarioLoginViewModel>();
             CreateMap<LOG, LogViewModel>();
             CreateMap<CONFIGURACAO, ConfiguracaoViewModel>();
-            CreateMap<MATRIZ, MatrizViewModel>();
-            CreateMap<FILIAL, FilialViewModel>();
-            CreateMap<CARGO, CargoViewModel>();
             CreateMap<NOTICIA, NoticiaViewModel>();
             CreateMap<NOTICIA_COMENTARIO, NoticiaComentarioViewModel>();
             CreateMap<NOTIFICACAO, NotificacaoViewModel>();
-            CreateMap<SEXO, SexoViewModel>();
             CreateMap<TIPO_PESSOA, TipoPessoaViewModel>();
-            CreateMap<REGIME_TRIBUTARIO, RegimeTributarioViewModel>();
-            CreateMap<UNIDADE, UnidadeViewModel>();
             CreateMap<TEMPLATE, TemplateViewModel>();
             CreateMap<TAREFA, TarefaViewModel>();
             CreateMap<CATEGORIA_AGENDA, CategoriaAgendaViewModel>();
@@ -34,14 +28,17 @@ namespace MvcMapping.Mappers
             CreateMap<TELEFONE, TelefoneViewModel>();
             CreateMap<GRUPO, GrupoViewModel>();
             CreateMap<SUBGRUPO, SubgrupoViewModel>();
-            CreateMap<CENTRO_CUSTO, CentroCustoViewModel>();
-            CreateMap<BANCO, BancoViewModel>();
-            CreateMap<CONTA_BANCO, ContaBancariaViewModel>();
-            CreateMap<CONTA_BANCO_CONTATO, ContaBancariaContatoViewModel>();
-            CreateMap<CONTA_BANCO_LANCAMENTO, ContaBancariaLancamentoViewModel>();
-            CreateMap<REGIAO_DENTE, DenteRegiaoViewModel>();
-            CreateMap<TIPO_PROCEDIMENTO_ANEXO, TipoProcedimentoAnexoViewModel>();
-            CreateMap<TIPO_PROCEDIMENTO, TipoProcedimentoViewModel>();
+            CreateMap<CATEGORIA_AGENDA, CategoriaAgendaViewModel>();
+            CreateMap<CATEGORIA_NOTIFICACAO, CategoriaNotificacaoViewModel>();
+            CreateMap<CATEGORIA_TELEFONE, CategoriaTelefoneViewModel>();
+            CreateMap<CATEGORIA_USUARIO, CategoriaUsuarioViewModel>();
+            CreateMap<CLASSE, ClasseViewModel>();
+            CreateMap<METADADO_CLASSE, MetadadoClasseViewModel>();
+            CreateMap<TIPO_DOCUMENTO, TipoDocumentoViewModel>();
+            CreateMap<TIPO_GRUPO, TipoGrupoViewModel>();
+            CreateMap<TIPO_METADADO, TipoMetadadoViewModel>();
+            CreateMap<TIPO_TAREFA, TipoTarefaViewModel>();
+
 
         }
     }
