@@ -217,7 +217,6 @@
     <Compile Include="Interfaces\EntitiesServices\ITelefoneService.cs" />
     <Compile Include="Interfaces\EntitiesServices\ITipoPessoaService.cs" />
     <Compile Include="Interfaces\EntitiesServices\IUsuarioService.cs" />
-    <Compile Include="Interfaces\ExternalServices\IECT_Services.cs" />
     <Compile Include="Interfaces\Repositories\IAgendaAnexoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IAgendaRepository.cs" />
     <Compile Include="Interfaces\Repositories\ITemplateRepository.cs" />
@@ -419,6 +418,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\ExternalServices\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

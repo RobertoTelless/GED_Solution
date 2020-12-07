@@ -39,7 +39,7 @@ namespace ApplicationServices.Services
             return item;
         }
 
-        public TIPO_DOCUMENTO CheckExist(TIPO_DOCUMENTO ag, Int32 idAss)
+        public TIPO_DOCUMENTO CheckExist(TIPO_DOCUMENTO ag, Int32? idAss)
         {
             TIPO_DOCUMENTO item = _baseService.CheckExist(ag, idAss);
             return item;
