@@ -15,9 +15,9 @@ namespace ApplicationServices.Interfaces
         Int32 ValidateDelete(GRUPO item, USUARIO usuario);
         Int32 ValidateReativar(GRUPO item, USUARIO usuario);
 
-        GRUPO CheckExist(GRUPO obj, Int32? idAss);
+        GRUPO CheckExist(GRUPO item, Int32? idAss);
         List<GRUPO> GetAllItens(Int32? idAss);
-        List<GRUPO> GetAllItensAdm(Int32? idAss);
         GRUPO GetItemById(Int32 id);
+        List<GRUPO> GetAllItensAdm(Int32? idAss);
     }
 }

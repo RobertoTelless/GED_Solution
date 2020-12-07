@@ -10,7 +10,6 @@ namespace ApplicationServices.Interfaces
     public interface IUsuarioAppService : IAppServiceBase<USUARIO>
     {
         Int32 ValidateCreate(USUARIO usuario, USUARIO usuarioLogado);
-        Int32 ValidateCreateAssinante(USUARIO usuario, USUARIO usuarioLogado);
         Int32 ValidateEdit(USUARIO usuario, USUARIO usuarioAntes, USUARIO usuarioLogado);
         Int32 ValidateEdit(USUARIO usuario, USUARIO usuarioLogado);
         Int32 ValidateLogin(String email, String senha, out USUARIO usuario);
@@ -34,20 +33,11 @@ namespace ApplicationServices.Interfaces
         List<NOTIFICACAO> GetNotificacaoNovas(Int32 id, Int32 idAss);
         Int32 GenerateNewPassword(String email);
         List<PERFIL> GetAllPerfis();
-        Int32 ExecuteFilter(Int32? causId, Int32? cargoId, Int32? filiId, String nome, String login, String email, Int32 idAss, out List<USUARIO> objeto);
+        Int32 ExecuteFilter(Int32? causId, String cargo, String nome, String login, String email, String cpf, Int32 idAss, out List<USUARIO> objeto);
         List<NOTICIA> GetAllNoticias(Int32 idAss);
-        USUARIO GetComprador(Int32 idAss);
-        USUARIO GetAprovador(Int32 idAss);
         USUARIO GetAdministrador(Int32 idAss);
         List<UF> GetAllUF();
         List<CATEGORIA_USUARIO> GetAllTipos(Int32 idAss);
-        List<SITUACAO> GetAllSituacao(Int32 idAss);
-        USUARIO_REMUNERACAO GetRemuneracaoByUser(Int32 id, DateTime data);
-        USUARIO_CONTRACHEQUE GetContrachequeByUser(Int32 id, DateTime data);
-        USUARIO_REMUNERACAO GetRemuneracaoById(Int32 id);
-        USUARIO_CONTRACHEQUE GetContrachequeById(Int32 id);
-
-        Int32 ValidateEditContracheque(USUARIO_CONTRACHEQUE item);
 
     }
 }

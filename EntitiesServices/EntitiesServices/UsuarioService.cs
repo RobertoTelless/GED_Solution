@@ -22,33 +22,25 @@ namespace ModelServices.EntitiesServices
         private readonly IPerfilRepository _perfRepository;
         private readonly ILogRepository _logRepository;
         private readonly IConfiguracaoRepository _configuracaoRepository;
-        private readonly ITemplateRepository _tempRepository;
         private readonly IUsuarioAnexoRepository _anexoRepository;
         private readonly INotificacaoRepository _notRepository;
         private readonly INoticiaRepository _ntcRepository;
         private readonly IUFRepository _ufRepository;
         private readonly ICategoriaUsuarioRepository _cuRepository;
-        private readonly ISituacaoRepository _siRepository;
-        private readonly IUsuarioRemuneracaoRepository _remRepository;
-        private readonly IUsuarioContrachequeRepository _ccRepository;
 
-        protected Odonto_DBEntities Db = new Odonto_DBEntities();
+        protected GEDEntities Db = new GEDEntities();
 
-        public UsuarioService(IUsuarioRepository usuarioRepository, ILogRepository logRepository, IConfiguracaoRepository configuracaoRepository, IPerfilRepository perfRepository, ITemplateRepository tempRepository, IUsuarioAnexoRepository anexoRepository, INotificacaoRepository notRepository, INoticiaRepository ntcRepository, IUFRepository ufRepository, ICategoriaUsuarioRepository cuRepository, ISituacaoRepository siRepository, IUsuarioRemuneracaoRepository remRepository, IUsuarioContrachequeRepository ccRepository) : base(usuarioRepository)
+        public UsuarioService(IUsuarioRepository usuarioRepository, ILogRepository logRepository, IConfiguracaoRepository configuracaoRepository, IPerfilRepository perfRepository, IUsuarioAnexoRepository anexoRepository, INotificacaoRepository notRepository, INoticiaRepository ntcRepository, IUFRepository ufRepository, ICategoriaUsuarioRepository cuRepository) : base(usuarioRepository)
         {
             _usuarioRepository = usuarioRepository;
             _logRepository = logRepository;
             _configuracaoRepository = configuracaoRepository;
             _perfRepository = perfRepository;
-            _tempRepository = tempRepository;
             _anexoRepository = anexoRepository;
             _notRepository = notRepository;
             _ntcRepository = ntcRepository;
             _ufRepository = ufRepository;
             _cuRepository = cuRepository;
-            _siRepository = siRepository;
-            _remRepository = remRepository;
-            _ccRepository = ccRepository;
         }
 
         public USUARIO RetriveUserByEmail(String email)
@@ -57,19 +49,9 @@ namespace ModelServices.EntitiesServices
             return usuario;
         }
 
-        public TEMPLATE GetTemplate(String code)
-        {
-            return _tempRepository.GetByCode(code);
-        }
-
         public List<CATEGORIA_USUARIO> GetAllTipos(Int32 idAss)
         {
             return _cuRepository.GetAllItens(idAss);
-        }
-
-        public List<SITUACAO> GetAllSituacao(Int32 idAss)
-        {
-            return _siRepository.GetAllItens(idAss);
         }
 
         public Boolean VerificarCredenciais (String senha, USUARIO usuario)
@@ -101,31 +83,6 @@ namespace ModelServices.EntitiesServices
             return _usuarioRepository.GetByLogin(login);
         }
 
-        public USUARIO_REMUNERACAO GetRemuneracaoByUser(Int32 id, DateTime data)
-        {
-            return _remRepository.GetItemByUser(id, data);
-        }
-
-        public USUARIO_CONTRACHEQUE GetContrachequeByUser(Int32 id, DateTime data)
-        {
-            return _ccRepository.GetItemByUser(id, data);
-        }
-
-        public USUARIO_REMUNERACAO GetRemuneracaoById(Int32 id)
-        {
-            return _remRepository.GetItemById(id);
-        }
-
-        public USUARIO_CONTRACHEQUE GetContrachequeById(Int32 id)
-        {
-            return _ccRepository.GetItemById(id);
-        }
-
-        public TEMPLATE GetTemplateByCode(String codigo)
-        {
-            return _tempRepository.GetByCode(codigo);
-        }
-
         public USUARIO GetItemById(Int32 id)
         {
             return _usuarioRepository.GetItemById(id);
@@ -151,19 +108,9 @@ namespace ModelServices.EntitiesServices
             return _usuarioRepository.GetAllItensBloqueados(idAss);
         }
 
-        public USUARIO GetComprador(Int32 idAss)
-        {
-            return _usuarioRepository.GetComprador(idAss);
-        }
-
         public USUARIO GetAdministrador(Int32 idAss)
         {
             return _usuarioRepository.GetAdministrador(idAss);
-        }
-
-        public USUARIO GetAprovador(Int32 idAss)
-        {
-            return _usuarioRepository.GetAprovador(idAss);
         }
 
         public List<USUARIO> GetAllItensAcessoHoje(Int32 idAss)
@@ -233,13 +180,10 @@ namespace ModelServices.EntitiesServices
         {
             try
             {
-                usuario.CARGO = null;
-                usuario.FILIAL = null;
                 usuario.PERFIL = null;
                 usuario.CATEGORIA_USUARIO = null;
                 usuario.ASSINANTE = null;
                 usuario.AGENDA = null;
-                usuario.SITUACAO = null;
                 USUARIO obj = _usuarioRepository.GetById(usuario.USUA_CD_ID);
                 _usuarioRepository.Detach(obj);
                 _usuarioRepository.Update(usuario);
@@ -268,9 +212,9 @@ namespace ModelServices.EntitiesServices
             return conf;
         }
 
-        public List<USUARIO> ExecuteFilter(Int32? causId, Int32? cargoId, Int32? filiId, String nome, String login, String email, Int32 idAss)
+        public List<USUARIO> ExecuteFilter(Int32? causId, String cargo, String nome, String login, String email, String cpf, Int32 idAss)
         {
-            List<USUARIO> lista = _usuarioRepository.ExecuteFilter(causId, cargoId, filiId, nome, login, email, idAss);
+            List<USUARIO> lista = _usuarioRepository.ExecuteFilter(causId, cargo, nome, login, email, cpf, idAss);
             return lista;
         }
 
@@ -299,26 +243,6 @@ namespace ModelServices.EntitiesServices
         public List<NOTICIA> GetAllNoticias(Int32 idAss)
         {
             return _ntcRepository.GetAllItens(idAss);
-        }
-
-        public Int32 EditContracheque(USUARIO_CONTRACHEQUE item)
-        {
-            using (DbContextTransaction transaction = Db.Database.BeginTransaction(IsolationLevel.ReadCommitted))
-            {
-                try
-                {
-                    USUARIO_CONTRACHEQUE obj = _ccRepository.GetById(item.USCC_CD_ID);
-                    _ccRepository.Detach(obj);
-                    _ccRepository.Update(item);
-                    transaction.Commit();
-                    return 0;
-                }
-                catch (Exception ex)
-                {
-                    transaction.Rollback();
-                    throw ex;
-                }
-            }
         }
 
     }
