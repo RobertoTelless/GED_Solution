@@ -22,7 +22,6 @@ namespace DataServices.Repositories
         {
             IQueryable<METADADO_CLASSE> query = Db.METADADO_CLASSE;
             query = query.Where(p => p.MECL_NM_NOME == conta.MECL_NM_NOME);
-            query = query.Where(p => p.ASSI_CD_ID == idAss);
             return query.FirstOrDefault();
         }
 

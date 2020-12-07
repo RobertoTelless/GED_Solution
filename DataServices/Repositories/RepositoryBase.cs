@@ -13,7 +13,7 @@ namespace DataServices.Repositories
 {
     public class RepositoryBase<TEntity> : IDisposable, IRepositoryBase<TEntity> where TEntity : class
     {
-        protected Odonto_DBEntities Db = new Odonto_DBEntities();
+        protected GEDEntities Db = new GEDEntities();
 
         public void Add(TEntity obj)
         {

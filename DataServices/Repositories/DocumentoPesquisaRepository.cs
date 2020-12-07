@@ -20,7 +20,7 @@ namespace DataServices.Repositories
 
         public List<DOCUMENTO_PESQUISA> GetAllItens(Int32 idAss)
         {
-            IQueryable<DOCUMENTO_PESQUISA> query = Db.DOCUMENTO_PESQUISA.Where(p => p.DOPE_IN_ATIVO == 1);
+            IQueryable<DOCUMENTO_PESQUISA> query = Db.DOCUMENTO_PESQUISA;
             query = query.Where(p => p.DOCU_CD_ID == idAss);
             query = query.OrderByDescending(a => a.DOPE_DT_PESQUISA);
             return query.ToList();
