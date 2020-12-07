@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="GEDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="GEDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AGENDA">
           <Key>
             <PropertyRef Name="AGEN_CD_ID" />
@@ -362,6 +362,23 @@
           <Property Name="TELE_NR_WHATSAPP" Type="varchar" MaxLength="50" />
           <Property Name="TELE_NM_EMAIL" Type="varchar" MaxLength="150" />
           <Property Name="TELE_IN_ATIVO" Type="int" />
+        </EntityType>
+        <EntityType Name="TEMPLATE">
+          <Key>
+            <PropertyRef Name="TEMP_CD_ID" />
+          </Key>
+          <Property Name="TEMP_CD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ASSI_CD_ID" Type="int" Nullable="false" />
+          <Property Name="TEMP_SG_SIGLA" Type="varchar" MaxLength="10" />
+          <Property Name="TEMP_NM_NOME" Type="varchar" MaxLength="50" />
+          <Property Name="TEMP_TX_CONTEUDO" Type="text" />
+          <Property Name="TEMP_AQ_ARQUIVO" Type="varchar" MaxLength="50" />
+          <Property Name="TEMP_IN_ATIVO" Type="int" Nullable="false" />
+          <Property Name="TEMP_TX_CONTEUDO_LIMPO" Type="text" />
+          <Property Name="TEMP_TX_CABECALHO" Type="text" />
+          <Property Name="TEMP_TX_CORPO" Type="text" />
+          <Property Name="TEMP_TX_DADOS" Type="text" />
+          <Property Name="TEMP_DT_CRIACAO" Type="date" />
         </EntityType>
         <EntityType Name="TIPO_DOCUMENTO">
           <Key>
@@ -1056,6 +1073,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TEMPLATE_ASSINANTE">
+          <End Role="ASSINANTE" Type="Self.ASSINANTE" Multiplicity="1" />
+          <End Role="TEMPLATE" Type="Self.TEMPLATE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASSINANTE">
+              <PropertyRef Name="ASSI_CD_ID" />
+            </Principal>
+            <Dependent Role="TEMPLATE">
+              <PropertyRef Name="ASSI_CD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TIPO_DOCUMENTO_ASSINANTE">
           <End Role="ASSINANTE" Type="Self.ASSINANTE" Multiplicity="1" />
           <End Role="TIPO_DOCUMENTO" Type="Self.TIPO_DOCUMENTO" Multiplicity="*" />
@@ -1181,6 +1210,7 @@
           <EntitySet Name="TAREFA_NOTIFICACAO" EntityType="Self.TAREFA_NOTIFICACAO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TAREFA_VINCULO" EntityType="Self.TAREFA_VINCULO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TELEFONE" EntityType="Self.TELEFONE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TEMPLATE" EntityType="Self.TEMPLATE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPO_DOCUMENTO" EntityType="Self.TIPO_DOCUMENTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPO_GRUPO" EntityType="Self.TIPO_GRUPO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPO_METADADO" EntityType="Self.TIPO_METADADO" Schema="dbo" store:Type="Tables" />
@@ -1385,6 +1415,10 @@
             <End Role="CATEGORIA_TELEFONE" EntitySet="CATEGORIA_TELEFONE" />
             <End Role="TELEFONE" EntitySet="TELEFONE" />
           </AssociationSet>
+          <AssociationSet Name="FK_TEMPLATE_ASSINANTE" Association="Self.FK_TEMPLATE_ASSINANTE">
+            <End Role="ASSINANTE" EntitySet="ASSINANTE" />
+            <End Role="TEMPLATE" EntitySet="TEMPLATE" />
+          </AssociationSet>
           <AssociationSet Name="FK_TIPO_DOCUMENTO_ASSINANTE" Association="Self.FK_TIPO_DOCUMENTO_ASSINANTE">
             <End Role="ASSINANTE" EntitySet="ASSINANTE" />
             <End Role="TIPO_DOCUMENTO" EntitySet="TIPO_DOCUMENTO" />
@@ -1418,8 +1452,7 @@
             <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GEDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1512,6 +1545,7 @@
           <NavigationProperty Name="TIPO_METADADO" Relationship="Self.FK_TIPO_METADADO_ASSINANTE" FromRole="ASSINANTE" ToRole="TIPO_METADADO" />
           <NavigationProperty Name="TIPO_TAREFA" Relationship="Self.FK_TIPO_TAREFA_ASSINANTE" FromRole="ASSINANTE" ToRole="TIPO_TAREFA" />
           <NavigationProperty Name="USUARIO" Relationship="Self.FK_USUARIO_ASSINANTE" FromRole="ASSINANTE" ToRole="USUARIO" />
+          <NavigationProperty Name="TEMPLATE" Relationship="GEDModel.FK_TEMPLATE_ASSINANTE" FromRole="ASSINANTE" ToRole="TEMPLATE" />
         </EntityType>
         <EntityType Name="CATEGORIA_AGENDA">
           <Key>
@@ -2949,7 +2983,42 @@
             <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="USUARIO_ANEXO" EntitySet="USUARIO_ANEXO" />
           </AssociationSet>
+          <EntitySet Name="TEMPLATE" EntityType="GEDModel.TEMPLATE" />
+          <AssociationSet Name="FK_TEMPLATE_ASSINANTE" Association="GEDModel.FK_TEMPLATE_ASSINANTE">
+            <End Role="ASSINANTE" EntitySet="ASSINANTE" />
+            <End Role="TEMPLATE" EntitySet="TEMPLATE" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="TEMPLATE">
+          <Key>
+            <PropertyRef Name="TEMP_CD_ID" />
+          </Key>
+          <Property Name="TEMP_CD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ASSI_CD_ID" Type="Int32" Nullable="false" />
+          <Property Name="TEMP_SG_SIGLA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TEMP_NM_NOME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TEMP_TX_CONTEUDO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TEMP_AQ_ARQUIVO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TEMP_IN_ATIVO" Type="Int32" Nullable="false" />
+          <Property Name="TEMP_TX_CONTEUDO_LIMPO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TEMP_TX_CABECALHO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TEMP_TX_CORPO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TEMP_TX_DADOS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TEMP_DT_CRIACAO" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="ASSINANTE" Relationship="GEDModel.FK_TEMPLATE_ASSINANTE" FromRole="TEMPLATE" ToRole="ASSINANTE" />
+        </EntityType>
+        <Association Name="FK_TEMPLATE_ASSINANTE">
+          <End Type="GEDModel.ASSINANTE" Role="ASSINANTE" Multiplicity="1" />
+          <End Type="GEDModel.TEMPLATE" Role="TEMPLATE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASSINANTE">
+              <PropertyRef Name="ASSI_CD_ID" />
+            </Principal>
+            <Dependent Role="TEMPLATE">
+              <PropertyRef Name="ASSI_CD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3452,6 +3521,24 @@
                 <ScalarProperty Name="USAN_IN_TIPO" ColumnName="USAN_IN_TIPO" />
                 <ScalarProperty Name="USAN_IN_ATIVO" ColumnName="USAN_IN_ATIVO" />
                 <ScalarProperty Name="USAN_AQ_ARQUIVO" ColumnName="USAN_AQ_ARQUIVO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TEMPLATE">
+            <EntityTypeMapping TypeName="GEDModel.TEMPLATE">
+              <MappingFragment StoreEntitySet="TEMPLATE">
+                <ScalarProperty Name="TEMP_DT_CRIACAO" ColumnName="TEMP_DT_CRIACAO" />
+                <ScalarProperty Name="TEMP_TX_DADOS" ColumnName="TEMP_TX_DADOS" />
+                <ScalarProperty Name="TEMP_TX_CORPO" ColumnName="TEMP_TX_CORPO" />
+                <ScalarProperty Name="TEMP_TX_CABECALHO" ColumnName="TEMP_TX_CABECALHO" />
+                <ScalarProperty Name="TEMP_TX_CONTEUDO_LIMPO" ColumnName="TEMP_TX_CONTEUDO_LIMPO" />
+                <ScalarProperty Name="TEMP_IN_ATIVO" ColumnName="TEMP_IN_ATIVO" />
+                <ScalarProperty Name="TEMP_AQ_ARQUIVO" ColumnName="TEMP_AQ_ARQUIVO" />
+                <ScalarProperty Name="TEMP_TX_CONTEUDO" ColumnName="TEMP_TX_CONTEUDO" />
+                <ScalarProperty Name="TEMP_NM_NOME" ColumnName="TEMP_NM_NOME" />
+                <ScalarProperty Name="TEMP_SG_SIGLA" ColumnName="TEMP_SG_SIGLA" />
+                <ScalarProperty Name="ASSI_CD_ID" ColumnName="ASSI_CD_ID" />
+                <ScalarProperty Name="TEMP_CD_ID" ColumnName="TEMP_CD_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

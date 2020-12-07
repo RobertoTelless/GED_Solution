@@ -61,5 +61,6 @@ namespace EntitiesServices.Model
         public virtual DbSet<UF> UF { get; set; }
         public virtual DbSet<USUARIO> USUARIO { get; set; }
         public virtual DbSet<USUARIO_ANEXO> USUARIO_ANEXO { get; set; }
+        public virtual DbSet<TEMPLATE> TEMPLATE { get; set; }
     }
 }

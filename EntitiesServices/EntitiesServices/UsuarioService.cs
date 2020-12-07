@@ -27,10 +27,11 @@ namespace ModelServices.EntitiesServices
         private readonly INoticiaRepository _ntcRepository;
         private readonly IUFRepository _ufRepository;
         private readonly ICategoriaUsuarioRepository _cuRepository;
+        private readonly ITemplateRepository _tempRepository;
 
         protected GEDEntities Db = new GEDEntities();
 
-        public UsuarioService(IUsuarioRepository usuarioRepository, ILogRepository logRepository, IConfiguracaoRepository configuracaoRepository, IPerfilRepository perfRepository, IUsuarioAnexoRepository anexoRepository, INotificacaoRepository notRepository, INoticiaRepository ntcRepository, IUFRepository ufRepository, ICategoriaUsuarioRepository cuRepository) : base(usuarioRepository)
+        public UsuarioService(IUsuarioRepository usuarioRepository, ILogRepository logRepository, IConfiguracaoRepository configuracaoRepository, IPerfilRepository perfRepository, IUsuarioAnexoRepository anexoRepository, INotificacaoRepository notRepository, INoticiaRepository ntcRepository, IUFRepository ufRepository, ICategoriaUsuarioRepository cuRepository, ITemplateRepository tempRepository) : base(usuarioRepository)
         {
             _usuarioRepository = usuarioRepository;
             _logRepository = logRepository;
@@ -41,6 +42,7 @@ namespace ModelServices.EntitiesServices
             _ntcRepository = ntcRepository;
             _ufRepository = ufRepository;
             _cuRepository = cuRepository;
+            _tempRepository = tempRepository;
         }
 
         public USUARIO RetriveUserByEmail(String email)
@@ -52,6 +54,11 @@ namespace ModelServices.EntitiesServices
         public List<CATEGORIA_USUARIO> GetAllTipos(Int32 idAss)
         {
             return _cuRepository.GetAllItens(idAss);
+        }
+
+        public TEMPLATE GetTemplate(String code)
+        {
+            return _tempRepository.GetByCode(code);
         }
 
         public Boolean VerificarCredenciais (String senha, USUARIO usuario)

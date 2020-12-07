@@ -192,6 +192,7 @@
     <Compile Include="EntitiesServices\UsuarioService.cs" />
     <Compile Include="Interfaces\EntitiesServices\IAgendaService.cs" />
     <Compile Include="Interfaces\EntitiesServices\IAssinanteService.cs" />
+    <Compile Include="Interfaces\EntitiesServices\ITemplateService.cs" />
     <Compile Include="Interfaces\EntitiesServices\ITipoTarefaService.cs" />
     <Compile Include="Interfaces\EntitiesServices\ITipoMetadadoService.cs" />
     <Compile Include="Interfaces\EntitiesServices\ITipoGrupoService.cs" />
@@ -219,6 +220,7 @@
     <Compile Include="Interfaces\ExternalServices\IECT_Services.cs" />
     <Compile Include="Interfaces\Repositories\IAgendaAnexoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IAgendaRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ITemplateRepository.cs" />
     <Compile Include="Interfaces\Repositories\ITipoMetadadoRepository.cs" />
     <Compile Include="Interfaces\Repositories\ITipoGrupoRepository.cs" />
     <Compile Include="Interfaces\Repositories\ITipoDocumentoRepository.cs" />
@@ -351,6 +353,9 @@
       <DependentUpon>GED_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\TELEFONE.cs">
+      <DependentUpon>GED_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TEMPLATE.cs">
       <DependentUpon>GED_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\TIPO_DOCUMENTO.cs">

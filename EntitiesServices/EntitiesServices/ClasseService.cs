@@ -21,13 +21,15 @@ namespace ModelServices.EntitiesServices
         private readonly IClasseRepository _baseRepository;
         private readonly ILogRepository _logRepository;
         private readonly ISubgrupoRepository _subRepository;
+        private readonly IMetadadoClasseRepository _metRepository;
         protected GEDEntities Db = new GEDEntities();
 
-        public ClasseService(IClasseRepository baseRepository, ILogRepository logRepository, ISubgrupoRepository subRepository) : base(baseRepository)
+        public ClasseService(IClasseRepository baseRepository, ILogRepository logRepository, ISubgrupoRepository subRepository, IMetadadoClasseRepository metRepository) : base(baseRepository)
         {
             _baseRepository = baseRepository;
             _logRepository = logRepository;
             _subRepository = subRepository;
+            _metRepository = metRepository;
         }
 
         public CLASSE CheckExist(CLASSE item, Int32? idAss)
@@ -160,5 +162,49 @@ namespace ModelServices.EntitiesServices
                 }
             }
         }
+
+        public METADADO_CLASSE GetMetadadoById(Int32 id)
+        {
+            return _metRepository.GetItemById(id);
+        }
+
+        public Int32 EditMetadado(METADADO_CLASSE item)
+        {
+            using (DbContextTransaction transaction = Db.Database.BeginTransaction(IsolationLevel.ReadCommitted))
+            {
+                try
+                {
+                    METADADO_CLASSE obj = _metRepository.GetById(item.MECL_CD_ID);
+                    _metRepository.Detach(obj);
+                    _metRepository.Update(item);
+                    transaction.Commit();
+                    return 0;
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    throw ex;
+                }
+            }
+        }
+
+        public Int32 CreateMetadado(METADADO_CLASSE item)
+        {
+            using (DbContextTransaction transaction = Db.Database.BeginTransaction(IsolationLevel.ReadCommitted))
+            {
+                try
+                {
+                    _metRepository.Add(item);
+                    transaction.Commit();
+                    return 0;
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    throw ex;
+                }
+            }
+        }
+
     }
 }

@@ -12,40 +12,40 @@ using System.Text.RegularExpressions;
 
 namespace ApplicationServices.Services
 {
-    public class GrupoAppService : AppServiceBase<GRUPO>, IGrupoAppService
+    public class CategoriaNotificacaoAppService : AppServiceBase<CATEGORIA_NOTIFICACAO>, ICategoriaNotificacaoAppService
     {
-        private readonly IGrupoService _baseService;
+        private readonly ICategoriaNotificacaoService _baseService;
 
-        public GrupoAppService(IGrupoService baseService): base(baseService)
+        public CategoriaNotificacaoAppService(ICategoriaNotificacaoService baseService): base(baseService)
         {
             _baseService = baseService;
         }
 
-        public List<GRUPO> GetAllItens(Int32? idAss)
+        public List<CATEGORIA_NOTIFICACAO> GetAllItens(Int32? idAss)
         {
-            List<GRUPO> lista = _baseService.GetAllItens(idAss);
+            List<CATEGORIA_NOTIFICACAO> lista = _baseService.GetAllItens(idAss);
             return lista;
         }
 
-        public GRUPO CheckExist(GRUPO obj, Int32? idAss)
+        public List<CATEGORIA_NOTIFICACAO> GetAllItensAdm(Int32? idAss)
         {
-            GRUPO item = _baseService.CheckExist(obj, idAss);
-            return item;
-        }
-
-        public List<GRUPO> GetAllItensAdm(Int32? idAss)
-        {
-            List<GRUPO> lista = _baseService.GetAllItensAdm(idAss);
+            List<CATEGORIA_NOTIFICACAO> lista = _baseService.GetAllItensAdm(idAss);
             return lista;
         }
 
-        public GRUPO GetItemById(Int32 id)
+        public CATEGORIA_NOTIFICACAO GetItemById(Int32 id)
         {
-            GRUPO item = _baseService.GetItemById(id);
+            CATEGORIA_NOTIFICACAO item = _baseService.GetItemById(id);
             return item;
         }
 
-        public Int32 ValidateCreate(GRUPO item, USUARIO usuario)
+        public CATEGORIA_NOTIFICACAO CheckExist(CATEGORIA_NOTIFICACAO ag, Int32 idAss)
+        {
+            CATEGORIA_NOTIFICACAO item = _baseService.CheckExist(ag, idAss);
+            return item;
+        }
+
+        public Int32 ValidateCreate(CATEGORIA_NOTIFICACAO item, USUARIO usuario)
         {
             try
             {
@@ -56,18 +56,18 @@ namespace ApplicationServices.Services
                 }
 
                 // Completa objeto
-                item.GRUP_IN_ATIVO = 1;
+                item.CANO_IN_ATIVO = 1;
                 item.ASSI_CD_ID = usuario.ASSI_CD_ID;
 
                 // Monta Log
                 LOG log = new LOG
                 {
                     LOG_DT_DATA = DateTime.Now,
-                    ASSI_CD_ID = usuario.ASSI_CD_ID,
                     USUA_CD_ID = usuario.USUA_CD_ID,
-                    LOG_NM_OPERACAO = "AddGRUP",
+                    ASSI_CD_ID = usuario.ASSI_CD_ID,
+                    LOG_NM_OPERACAO = "AddCANO",
                     LOG_IN_ATIVO = 1,
-                    LOG_TX_REGISTRO = Serialization.SerializeJSON<GRUPO>(item)
+                    LOG_TX_REGISTRO = Serialization.SerializeJSON<CATEGORIA_NOTIFICACAO>(item)
                 };
 
                 // Persiste
@@ -80,7 +80,7 @@ namespace ApplicationServices.Services
             }
         }
 
-        public Int32 ValidateEdit(GRUPO item, GRUPO itemAntes, USUARIO usuario)
+        public Int32 ValidateEdit(CATEGORIA_NOTIFICACAO item, CATEGORIA_NOTIFICACAO itemAntes, USUARIO usuario)
         {
             try
             {
@@ -88,12 +88,12 @@ namespace ApplicationServices.Services
                 LOG log = new LOG
                 {
                     LOG_DT_DATA = DateTime.Now,
-                    ASSI_CD_ID = usuario.ASSI_CD_ID,
                     USUA_CD_ID = usuario.USUA_CD_ID,
-                    LOG_NM_OPERACAO = "EditGRUP",
+                    ASSI_CD_ID = usuario.ASSI_CD_ID,
+                    LOG_NM_OPERACAO = "EditCANO",
                     LOG_IN_ATIVO = 1,
-                    LOG_TX_REGISTRO = Serialization.SerializeJSON<GRUPO>(item),
-                    LOG_TX_REGISTRO_ANTES = Serialization.SerializeJSON<GRUPO>(itemAntes)
+                    LOG_TX_REGISTRO = Serialization.SerializeJSON<CATEGORIA_NOTIFICACAO>(item),
+                    LOG_TX_REGISTRO_ANTES = Serialization.SerializeJSON<CATEGORIA_NOTIFICACAO>(itemAntes)
                 };
 
                 // Persiste
@@ -105,7 +105,7 @@ namespace ApplicationServices.Services
             }
         }
 
-        public Int32 ValidateEdit(GRUPO item, GRUPO itemAntes)
+        public Int32 ValidateEdit(CATEGORIA_NOTIFICACAO item, CATEGORIA_NOTIFICACAO itemAntes)
         {
             try
             {
@@ -118,28 +118,28 @@ namespace ApplicationServices.Services
             }
         }
 
-        public Int32 ValidateDelete(GRUPO item, USUARIO usuario)
+        public Int32 ValidateDelete(CATEGORIA_NOTIFICACAO item, USUARIO usuario)
         {
             try
             {
                 // Verifica integridade referencial
-                if (item.SUBGRUPO.Count > 0)
+                if (item.NOTIFICACAO.Count > 0)
                 {
                     return 1;
                 }
 
                 // Acerta campos
-                item.GRUP_IN_ATIVO = 0;
+                item.CANO_IN_ATIVO = 0;
 
                 // Monta Log
                 LOG log = new LOG
                 {
                     LOG_DT_DATA = DateTime.Now,
-                    ASSI_CD_ID = usuario.ASSI_CD_ID,
                     USUA_CD_ID = usuario.USUA_CD_ID,
+                    ASSI_CD_ID = usuario.ASSI_CD_ID,
                     LOG_IN_ATIVO = 1,
-                    LOG_NM_OPERACAO = "DeleGRUP",
-                    LOG_TX_REGISTRO = "Grupo: " + item.GRUP_NM_NOME
+                    LOG_NM_OPERACAO = "DeleCANO",
+                    LOG_TX_REGISTRO = "Categoria de Notificação: " + item.CANO_NM_NOME
                 };
 
                 // Persiste
@@ -151,24 +151,24 @@ namespace ApplicationServices.Services
             }
         }
 
-        public Int32 ValidateReativar(GRUPO item, USUARIO usuario)
+        public Int32 ValidateReativar(CATEGORIA_NOTIFICACAO item, USUARIO usuario)
         {
             try
             {
                 // Verifica integridade referencial
 
                 // Acerta campos
-                item.GRUP_IN_ATIVO = 1;
+                item.CANO_IN_ATIVO = 1;
 
                 // Monta Log
                 LOG log = new LOG
                 {
                     LOG_DT_DATA = DateTime.Now,
-                    ASSI_CD_ID = usuario.ASSI_CD_ID,
                     USUA_CD_ID = usuario.USUA_CD_ID,
+                    ASSI_CD_ID = usuario.ASSI_CD_ID,
                     LOG_IN_ATIVO = 1,
-                    LOG_NM_OPERACAO = "ReatGRUP",
-                    LOG_TX_REGISTRO = "Grupo: " + item.GRUP_NM_NOME
+                    LOG_NM_OPERACAO = "ReatCANO",
+                    LOG_TX_REGISTRO = "Categoria de Notificação: " + item.CANO_NM_NOME
                 };
 
                 // Persiste

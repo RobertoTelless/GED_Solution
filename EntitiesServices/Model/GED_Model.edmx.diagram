@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d7c8c79c1b554656832edcd01290d84f" Name="Diagram1">
+      <Diagram DiagramId="d7c8c79c1b554656832edcd01290d84f" Name="Diagram1" ZoomLevel="97">
         <EntityTypeShape EntityType="GEDModel.AGENDA" Width="1.5" PointX="7.5" PointY="34.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GEDModel.AGENDA_ANEXO" Width="1.5" PointX="9.75" PointY="31.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GEDModel.AGENDA_VINCULO" Width="1.5" PointX="15.75" PointY="37.875" IsExpanded="true" />
@@ -98,6 +98,8 @@
         <AssociationConnector Association="GEDModel.FK_TAREFA_NOTIFICACAO_USUARIO" ManuallyRouted="false" />
         <AssociationConnector Association="GEDModel.FK_TAREFA_VINCULO_USUARIO" ManuallyRouted="false" />
         <AssociationConnector Association="GEDModel.FK_USUARIO_ANEXO_USUARIO" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="GEDModel.TEMPLATE" Width="1.5" PointX="5.25" PointY="26.375" />
+        <AssociationConnector Association="GEDModel.FK_TEMPLATE_ASSINANTE" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

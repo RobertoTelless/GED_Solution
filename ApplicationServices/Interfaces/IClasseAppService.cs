@@ -22,5 +22,9 @@ namespace ApplicationServices.Interfaces
         List<SUBGRUPO> GetAllSubgrupos(Int32? idAss);
 
         Int32 ExecuteFilter(Int32? subgrupo, String nome, String descricao, String sigla, Int32 idAss, out List<CLASSE> objeto);
+        
+        METADADO_CLASSE GetMetadadoById(Int32 id);
+        Int32 ValidateEditMetadado(METADADO_CLASSE item);
+        Int32 ValidateCreateMetadado(METADADO_CLASSE item);
     }
 }

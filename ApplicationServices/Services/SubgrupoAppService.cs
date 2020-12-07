@@ -129,7 +129,7 @@ namespace ApplicationServices.Services
             try
             {
                 // Verifica integridade referencial
-                if (item.CENTRO_CUSTO.Count > 0)
+                if (item.CLASSE.Count > 0)
                 {
                     return 1;
                 }

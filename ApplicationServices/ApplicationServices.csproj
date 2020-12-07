@@ -161,6 +161,7 @@
     <Compile Include="Interfaces\IAgendaAppService.cs" />
     <Compile Include="Interfaces\IAppServiceBase.cs" />
     <Compile Include="Interfaces\IAssinanteAppService.cs" />
+    <Compile Include="Interfaces\ITemplateAppService.cs" />
     <Compile Include="Interfaces\ITipoMetadadoAppService.cs" />
     <Compile Include="Interfaces\ITipoGrupoAppService.cs" />
     <Compile Include="Interfaces\ITipoDocumentoAppService.cs" />
@@ -185,6 +186,14 @@
     <Compile Include="Services\AgendaAppService.cs" />
     <Compile Include="Services\AppServiceBase.cs" />
     <Compile Include="Services\AssinanteAppService.cs" />
+    <Compile Include="Services\TemplateAppService.cs" />
+    <Compile Include="Services\TipoMetadadoAppService.cs" />
+    <Compile Include="Services\TipoGrupoAppService.cs" />
+    <Compile Include="Services\TipoDocumentoAppService.cs" />
+    <Compile Include="Services\ClasseAppService.cs" />
+    <Compile Include="Services\CategoriaUsuarioAppService.cs" />
+    <Compile Include="Services\CategoriaTelefoneAppService.cs" />
+    <Compile Include="Services\CategoriaNotificacaoAppService.cs" />
     <Compile Include="Services\ConfiguracaoAppService.cs" />
     <Compile Include="Services\GrupoAppService.cs" />
     <Compile Include="Services\LogAppService.cs" />
@@ -194,9 +203,8 @@
     <Compile Include="Services\SubgrupoAppService.cs" />
     <Compile Include="Services\TarefaAppService.cs" />
     <Compile Include="Services\TelefoneAppService.cs" />
-    <Compile Include="Services\TemplateAppService.cs" />
+    <Compile Include="Services\CategoriaAgendaAppService.cs" />
     <Compile Include="Services\TipoPessoaAppService.cs" />
-    <Compile Include="Services\TipoTagAppService.cs" />
     <Compile Include="Services\UsuarioAppService.cs" />
   </ItemGroup>
   <ItemGroup>

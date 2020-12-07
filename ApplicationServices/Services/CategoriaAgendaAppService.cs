@@ -12,40 +12,40 @@ using System.Text.RegularExpressions;
 
 namespace ApplicationServices.Services
 {
-    public class GrupoAppService : AppServiceBase<GRUPO>, IGrupoAppService
+    public class CategoriaAgendaAppService : AppServiceBase<CATEGORIA_AGENDA>, ICategoriaAgendaAppService
     {
-        private readonly IGrupoService _baseService;
+        private readonly ICategoriaAgendaService _baseService;
 
-        public GrupoAppService(IGrupoService baseService): base(baseService)
+        public CategoriaAgendaAppService(ICategoriaAgendaService baseService): base(baseService)
         {
             _baseService = baseService;
         }
 
-        public List<GRUPO> GetAllItens(Int32? idAss)
+        public List<CATEGORIA_AGENDA> GetAllItens(Int32? idAss)
         {
-            List<GRUPO> lista = _baseService.GetAllItens(idAss);
+            List<CATEGORIA_AGENDA> lista = _baseService.GetAllItens(idAss);
             return lista;
         }
 
-        public GRUPO CheckExist(GRUPO obj, Int32? idAss)
+        public List<CATEGORIA_AGENDA> GetAllItensAdm(Int32? idAss)
         {
-            GRUPO item = _baseService.CheckExist(obj, idAss);
-            return item;
-        }
-
-        public List<GRUPO> GetAllItensAdm(Int32? idAss)
-        {
-            List<GRUPO> lista = _baseService.GetAllItensAdm(idAss);
+            List<CATEGORIA_AGENDA> lista = _baseService.GetAllItensAdm(idAss);
             return lista;
         }
 
-        public GRUPO GetItemById(Int32 id)
+        public CATEGORIA_AGENDA GetItemById(Int32 id)
         {
-            GRUPO item = _baseService.GetItemById(id);
+            CATEGORIA_AGENDA item = _baseService.GetItemById(id);
             return item;
         }
 
-        public Int32 ValidateCreate(GRUPO item, USUARIO usuario)
+        public CATEGORIA_AGENDA CheckExist(CATEGORIA_AGENDA ag, Int32 idAss)
+        {
+            CATEGORIA_AGENDA item = _baseService.CheckExist(ag, idAss);
+            return item;
+        }
+
+        public Int32 ValidateCreate(CATEGORIA_AGENDA item, USUARIO usuario)
         {
             try
             {
@@ -56,18 +56,18 @@ namespace ApplicationServices.Services
                 }
 
                 // Completa objeto
-                item.GRUP_IN_ATIVO = 1;
+                item.CAAG_IN_ATIVO = 1;
                 item.ASSI_CD_ID = usuario.ASSI_CD_ID;
 
                 // Monta Log
                 LOG log = new LOG
                 {
                     LOG_DT_DATA = DateTime.Now,
-                    ASSI_CD_ID = usuario.ASSI_CD_ID,
                     USUA_CD_ID = usuario.USUA_CD_ID,
-                    LOG_NM_OPERACAO = "AddGRUP",
+                    ASSI_CD_ID = usuario.ASSI_CD_ID,
+                    LOG_NM_OPERACAO = "AddCAAG",
                     LOG_IN_ATIVO = 1,
-                    LOG_TX_REGISTRO = Serialization.SerializeJSON<GRUPO>(item)
+                    LOG_TX_REGISTRO = Serialization.SerializeJSON<CATEGORIA_AGENDA>(item)
                 };
 
                 // Persiste
@@ -80,7 +80,7 @@ namespace ApplicationServices.Services
             }
         }
 
-        public Int32 ValidateEdit(GRUPO item, GRUPO itemAntes, USUARIO usuario)
+        public Int32 ValidateEdit(CATEGORIA_AGENDA item, CATEGORIA_AGENDA itemAntes, USUARIO usuario)
         {
             try
             {
@@ -88,12 +88,12 @@ namespace ApplicationServices.Services
                 LOG log = new LOG
                 {
                     LOG_DT_DATA = DateTime.Now,
-                    ASSI_CD_ID = usuario.ASSI_CD_ID,
                     USUA_CD_ID = usuario.USUA_CD_ID,
-                    LOG_NM_OPERACAO = "EditGRUP",
+                    ASSI_CD_ID = usuario.ASSI_CD_ID,
+                    LOG_NM_OPERACAO = "EditCAAG",
                     LOG_IN_ATIVO = 1,
-                    LOG_TX_REGISTRO = Serialization.SerializeJSON<GRUPO>(item),
-                    LOG_TX_REGISTRO_ANTES = Serialization.SerializeJSON<GRUPO>(itemAntes)
+                    LOG_TX_REGISTRO = Serialization.SerializeJSON<CATEGORIA_AGENDA>(item),
+                    LOG_TX_REGISTRO_ANTES = Serialization.SerializeJSON<CATEGORIA_AGENDA>(itemAntes)
                 };
 
                 // Persiste
@@ -105,7 +105,7 @@ namespace ApplicationServices.Services
             }
         }
 
-        public Int32 ValidateEdit(GRUPO item, GRUPO itemAntes)
+        public Int32 ValidateEdit(CATEGORIA_AGENDA item, CATEGORIA_AGENDA itemAntes)
         {
             try
             {
@@ -118,28 +118,28 @@ namespace ApplicationServices.Services
             }
         }
 
-        public Int32 ValidateDelete(GRUPO item, USUARIO usuario)
+        public Int32 ValidateDelete(CATEGORIA_AGENDA item, USUARIO usuario)
         {
             try
             {
                 // Verifica integridade referencial
-                if (item.SUBGRUPO.Count > 0)
+                if (item.AGENDA.Count > 0)
                 {
                     return 1;
                 }
 
                 // Acerta campos
-                item.GRUP_IN_ATIVO = 0;
+                item.CAAG_IN_ATIVO = 0;
 
                 // Monta Log
                 LOG log = new LOG
                 {
                     LOG_DT_DATA = DateTime.Now,
-                    ASSI_CD_ID = usuario.ASSI_CD_ID,
                     USUA_CD_ID = usuario.USUA_CD_ID,
+                    ASSI_CD_ID = usuario.ASSI_CD_ID,
                     LOG_IN_ATIVO = 1,
-                    LOG_NM_OPERACAO = "DeleGRUP",
-                    LOG_TX_REGISTRO = "Grupo: " + item.GRUP_NM_NOME
+                    LOG_NM_OPERACAO = "DeleCAAG",
+                    LOG_TX_REGISTRO = "Categoria de Agenda: " + item.CAAG_NM_NOME
                 };
 
                 // Persiste
@@ -151,24 +151,24 @@ namespace ApplicationServices.Services
             }
         }
 
-        public Int32 ValidateReativar(GRUPO item, USUARIO usuario)
+        public Int32 ValidateReativar(CATEGORIA_AGENDA item, USUARIO usuario)
         {
             try
             {
                 // Verifica integridade referencial
 
                 // Acerta campos
-                item.GRUP_IN_ATIVO = 1;
+                item.CAAG_IN_ATIVO = 1;
 
                 // Monta Log
                 LOG log = new LOG
                 {
                     LOG_DT_DATA = DateTime.Now,
-                    ASSI_CD_ID = usuario.ASSI_CD_ID,
                     USUA_CD_ID = usuario.USUA_CD_ID,
+                    ASSI_CD_ID = usuario.ASSI_CD_ID,
                     LOG_IN_ATIVO = 1,
-                    LOG_NM_OPERACAO = "ReatGRUP",
-                    LOG_TX_REGISTRO = "Grupo: " + item.GRUP_NM_NOME
+                    LOG_NM_OPERACAO = "ReatCAAG",
+                    LOG_TX_REGISTRO = "Categoria de Agenda: " + item.CAAG_NM_NOME
                 };
 
                 // Persiste

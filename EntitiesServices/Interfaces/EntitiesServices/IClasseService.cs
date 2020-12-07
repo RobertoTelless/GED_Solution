@@ -22,5 +22,9 @@ namespace ModelServices.Interfaces.EntitiesServices
         List<CLASSE> GetAllItensAdm(Int32 idAss);
         List<CLASSE> ExecuteFilter(Int32? subgrupo, String nome, String descricao, String sigla, Int32 idAss);
         List<SUBGRUPO> GetAllSubgrupos(Int32 idAss);
+
+        METADADO_CLASSE GetMetadadoById(Int32 id);
+        Int32 EditMetadado(METADADO_CLASSE item);
+        Int32 CreateMetadado(METADADO_CLASSE item);
     }
 }

@@ -9,8 +9,6 @@ using ApplicationServices.Interfaces;
 using ModelServices.Interfaces.EntitiesServices;
 using CrossCutting;
 using System.Text.RegularExpressions;
-using SendGrid;
-using SendGrid.Helpers.Mail;
 using System.Web;
 using Itenso.TimePeriod;
 
@@ -38,32 +36,6 @@ namespace ApplicationServices.Services
             return lista;
         }
 
-        public List<SITUACAO> GetAllSituacao(Int32 idAss)
-        {
-            List<SITUACAO> lista = _usuarioService.GetAllSituacao(idAss);
-            return lista;
-        }
-
-        public USUARIO_REMUNERACAO GetRemuneracaoByUser(Int32 id, DateTime data)
-        {
-            return _usuarioService.GetRemuneracaoByUser(id, data);
-        }
-
-        public USUARIO_CONTRACHEQUE GetContrachequeByUser(Int32 id, DateTime data)
-        {
-            return _usuarioService.GetContrachequeByUser(id, data);
-        }
-
-        public USUARIO_REMUNERACAO GetRemuneracaoById(Int32 id)
-        {
-            return _usuarioService.GetRemuneracaoById(id);
-        }
-
-        public USUARIO_CONTRACHEQUE GetContrachequeById(Int32 id)
-        {
-            return _usuarioService.GetContrachequeById(id);
-        }
-
         public USUARIO GetByLogin(String login)
         {
             return _usuarioService.GetByLogin(login);
@@ -89,19 +61,9 @@ namespace ApplicationServices.Services
             return _usuarioService.GetAllItens(idAss);
         }
 
-        public USUARIO GetComprador(Int32 idAss)
-        {
-            return _usuarioService.GetComprador(idAss);
-        }
-
         public USUARIO GetAdministrador(Int32 idAss)
         {
             return _usuarioService.GetAdministrador(idAss);
-        }
-
-        public USUARIO GetAprovador(Int32 idAss)
-        {
-            return _usuarioService.GetAprovador(idAss);
         }
 
         public List<NOTIFICACAO> GetAllItensUser(Int32 id, Int32 idAss)
@@ -200,7 +162,6 @@ namespace ApplicationServices.Services
                 usuario.USUA_IN_ATIVO = 1;
                 usuario.USUA_DT_ULTIMA_FALHA = DateTime.Now;
                 usuario.ASSI_CD_ID = usuarioLogado.ASSI_CD_ID;
-                usuario.USUA_IN_CATEGORIA = 2;
 
                 // Monta Log
                 LOG log = new LOG
@@ -232,17 +193,13 @@ namespace ApplicationServices.Services
                 USUARIO adm = _usuarioService.GetAdministrador(usuarioLogado.ASSI_CD_ID);
                 noti.ASSI_CD_ID = usuarioLogado.ASSI_CD_ID;
                 noti.CANO_CD_ID = 1;
-                noti.NOTI_DT_DATA = DateTime.Today.Date;
                 noti.NOTI_DT_EMISSAO = DateTime.Today.Date;
                 noti.NOTI_DT_VALIDADE = DateTime.Today.Date.AddDays(30);
                 noti.NOTI_DT_VISTA = null;
                 noti.NOTI_IN_ATIVO = 1;
-                noti.NOTI_IN_ENVIADA = 1;
-                noti.NOTI_IN_NIVEL = 1;
                 noti.NOTI_IN_STATUS = 1;
                 noti.NOTI_IN_VISTA = 0;
                 noti.NOTI_NM_TITULO = "Solicição de Alteração de Cadastro";
-
                 noti.USUA_CD_ID = adm.USUA_CD_ID;
 
                 // Gera Notificação
@@ -279,70 +236,6 @@ namespace ApplicationServices.Services
 
                 // Envia e-mail
                 Int32 voltaMail = CommunicationPackage.SendEmail(mensagem);
-                return volta;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-        }
-
-        public Int32 ValidateCreateAssinante(USUARIO usuario, USUARIO usuarioLogado)
-        {
-            try
-            {
-                // Verifica senhas
-                if (usuario.USUA_NM_SENHA != usuario.USUA_NM_SENHA_CONFIRMA)
-                {
-                    return 1;
-                }
-
-                // Verifica Email
-                if (!ValidarItensDiversos.IsValidEmail(usuario.USUA_NM_EMAIL))
-                {
-                    return 2;
-                }
-
-                // Verifica existencia prévia
-                if (_usuarioService.GetByEmail(usuario.USUA_NM_EMAIL) != null)
-                {
-                    return 3;
-                }
-                if (_usuarioService.GetByLogin(usuario.USUA_NM_LOGIN) != null)
-                {
-                    return 4;
-                }
-
-                //Completa campos de usuários
-                //usuario.USUA_NM_SENHA = Cryptography.Encode(usuario.USUA_NM_SENHA);
-                usuario.USUA_IN_BLOQUEADO = 0;
-                usuario.USUA_IN_PROVISORIO = 0;
-                usuario.USUA_IN_LOGIN_PROVISORIO = 0;
-                usuario.USUA_NR_ACESSOS = 0;
-                usuario.USUA_NR_FALHAS = 0;
-                usuario.USUA_DT_ALTERACAO = null;
-                usuario.USUA_DT_BLOQUEADO = null;
-                usuario.USUA_DT_TROCA_SENHA = null;
-                usuario.USUA_DT_ACESSO = DateTime.Now;
-                usuario.USUA_DT_CADASTRO = DateTime.Today.Date;
-                usuario.USUA_IN_ATIVO = 1;
-                usuario.USUA_DT_ULTIMA_FALHA = DateTime.Now;
-                usuario.ASSI_CD_ID = usuarioLogado.ASSI_CD_ID;
-
-                // Monta Log
-                LOG log = new LOG
-                {
-                    LOG_DT_DATA = DateTime.Now,
-                    USUA_CD_ID = usuarioLogado.USUA_CD_ID,
-                    ASSI_CD_ID = usuarioLogado.ASSI_CD_ID,
-                    LOG_NM_OPERACAO = "AddUSUA",
-                    LOG_TX_REGISTRO = Serialization.SerializeJSON<USUARIO>(usuario),
-                    LOG_IN_ATIVO = 1
-                };
-
-
-                // Persiste
-                Int32 volta = _usuarioService.CreateUser(usuario, log);
                 return volta;
             }
             catch (Exception ex)
@@ -494,6 +387,10 @@ namespace ApplicationServices.Services
             try
             {
                 // Verifica integridade
+                if (usuario.DOCUMENTO.Count > 0)
+                {
+                    return 1;
+                }
 
                 // Acerta campos de usuários
                 usuario.USUA_DT_ALTERACAO = DateTime.Now;
@@ -610,13 +507,11 @@ namespace ApplicationServices.Services
             try
             {
                 usuario = new USUARIO();
-                // Checa login
+                // Checa Preenchimentos 
                 if (String.IsNullOrEmpty(login))
                 {
                     return 10;
                 }
-
-                // Checa senha
                 if (String.IsNullOrEmpty(senha))
                 {
                     return 9;
@@ -689,15 +584,14 @@ namespace ApplicationServices.Services
                         Int32 voltaBloqueio = _usuarioService.EditUser(usuario);
                         return 6;
                     }
-                    //SessionMocks.IdAssinante = usuario.ASSI_CD_ID;
                     Int32 volta = _usuarioService.EditUser(usuario);
                     return 7;
                 }
 
                 // Atualiza acessos e data do acesso
-                //SessionMocks.IdAssinante = usuario.ASSI_CD_ID;
                 usuario.USUA_NR_ACESSOS = ++usuario.USUA_NR_ACESSOS;
                 usuario.USUA_DT_ACESSO = DateTime.Now.Date;
+                usuario.USUA_IN_LOGADO = 1;
                 Int32 voltaAcesso = _usuarioService.EditUser(usuario);
                 return 0;
             }
@@ -756,16 +650,13 @@ namespace ApplicationServices.Services
                 noti.CANO_CD_ID = 1;
                 noti.ASSI_CD_ID = usuario.ASSI_CD_ID;
                 noti.NOTI_DT_EMISSAO = DateTime.Today;
-                noti.NOTI_DT_DATA = DateTime.Today.Date;
                 noti.NOTI_DT_VALIDADE = DateTime.Today.Date.AddDays(30);
                 noti.NOTI_IN_VISTA = 0;
                 noti.NOTI_NM_TITULO = "Alteração de Senha";
                 noti.NOTI_IN_ATIVO = 1;
                 noti.NOTI_TX_TEXTO = "ATENÇÃO: A sua senha foi alterada em " + DateTime.Today.Date.ToLongDateString() + ".";
                 noti.USUA_CD_ID = usuario.USUA_CD_ID;
-                noti.NOTI_IN_ENVIADA = 1;
                 noti.NOTI_IN_STATUS = 1;
-                noti.NOTI_IN_NIVEL = 1;
                 Int32 volta1 = _notiService.Create(noti);
 
 
@@ -837,16 +728,13 @@ namespace ApplicationServices.Services
             noti.CANO_CD_ID = 1;
             noti.ASSI_CD_ID = usuario.ASSI_CD_ID;
             noti.NOTI_DT_EMISSAO = DateTime.Today;
-            noti.NOTI_DT_DATA = DateTime.Today.Date;
             noti.NOTI_DT_VALIDADE = DateTime.Today.Date.AddDays(30);
             noti.NOTI_IN_VISTA = 0;
             noti.NOTI_NM_TITULO = "Geração de Nova Senha";
             noti.NOTI_IN_ATIVO = 1;
             noti.NOTI_TX_TEXTO = "ATENÇÃO: Sua solicitação de nova senha foi atendida em " + DateTime.Today.Date.ToLongDateString() + ". Verifique no seu e-mail cadastrado no sistema.";
             noti.USUA_CD_ID = usuario.USUA_CD_ID;
-            noti.NOTI_IN_ENVIADA = 1;
             noti.NOTI_IN_STATUS = 1;
-            noti.NOTI_IN_NIVEL = 1;
             Int32 volta1 = _notiService.Create(noti);
 
             // Recupera template e-mail
@@ -879,7 +767,6 @@ namespace ApplicationServices.Services
 
             // Envia e-mail
             Int32 voltaMail = CommunicationPackage.SendEmail(mensagem);
-            //Task<Response> task = Execute(conf, emailBody, usuario);
 
             // Atualiza usuario
             Int32 volta = _usuarioService.EditUser(usuario);
@@ -888,24 +775,7 @@ namespace ApplicationServices.Services
             return 0;
         }
 
-        public static async Task<Response> Execute(CONFIGURACAO conf, String emailBody, USUARIO usuario)
-        {
-            //String apiKey = System.Environment.GetEnvironmentVariable("SENDGRIDAPIKEY");
-            String apiKey = conf.CONF_NM_SENDGRID_KEY;
-            SendGridClient client = new SendGridClient(apiKey);
-            SendGridMessage msg = new SendGridMessage()
-            {
-                From = new EmailAddress(conf.CONF_NM_EMAIL_EMISSOO, conf.CONF_NM_NOME_EMPRESA),
-                Subject = "Geração de Nova Senha",
-                HtmlContent = emailBody
-            };
-            msg.AddTo(new EmailAddress(usuario.USUA_NM_EMAIL, usuario.USUA_NM_NOME));
-            var response = await client.SendEmailAsync(msg);
-            return response;
-        }
-
-
-        public Int32 ExecuteFilter(Int32? causId, Int32? cargoId, Int32? filiId, String nome, String login, String email, Int32 idAss, out List<USUARIO> objeto)
+        public Int32 ExecuteFilter(Int32? causId, String cargo, String nome, String login, String email, String cpf, Int32 idAss, out List<USUARIO> objeto)
         {
             try
             {
@@ -913,7 +783,7 @@ namespace ApplicationServices.Services
                 Int32 volta = 0;
 
                 // Processa filtro
-                objeto = _usuarioService.ExecuteFilter(causId, cargoId, filiId, nome, login, email, idAss);
+                objeto = _usuarioService.ExecuteFilter(causId, cargo, nome, login, email, cpf, idAss);
                 if (objeto.Count == 0)
                 {
                     volta = 1;
@@ -930,19 +800,6 @@ namespace ApplicationServices.Services
         {
             List<PERFIL> lista = _usuarioService.GetAllPerfis();
             return lista;
-        }
-
-        public Int32 ValidateEditContracheque(USUARIO_CONTRACHEQUE item)
-        {
-            try
-            {
-                // Persiste
-                return _usuarioService.EditContracheque(item);
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
         }
 
     }

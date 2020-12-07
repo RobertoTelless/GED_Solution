@@ -163,6 +163,7 @@
     <Compile Include="Repositories\AgendaAnexoRepository.cs" />
     <Compile Include="Repositories\AgendaRepository.cs" />
     <Compile Include="Repositories\AssinanteRepository.cs" />
+    <Compile Include="Repositories\TemplateRepository.cs" />
     <Compile Include="Repositories\TipoMetadadoRepository.cs" />
     <Compile Include="Repositories\TipoGrupoRepository.cs" />
     <Compile Include="Repositories\TipoDocumentoRepository.cs" />

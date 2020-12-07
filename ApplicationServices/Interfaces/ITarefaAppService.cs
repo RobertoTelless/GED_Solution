@@ -22,7 +22,7 @@ namespace ApplicationServices.Interfaces
         List<TAREFA> GetTarefaStatus(Int32 user, Int32 tipo);
         List<TAREFA> GetAllItens(Int32 idAss);
         List<TAREFA> GetAllItensAdm(Int32 idAss);
-        List<USUARIO> GetAllUsers(Int32 idAss);
+        //List<USUARIO> GetAllUsers(Int32 idAss);
         List<TIPO_TAREFA> GetAllTipos(Int32 idAss);
         TAREFA_ANEXO GetAnexoById(Int32 id);
         USUARIO GetUserById(Int32 id);
