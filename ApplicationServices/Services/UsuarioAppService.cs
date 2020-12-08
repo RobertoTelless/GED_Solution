@@ -198,6 +198,7 @@ namespace ApplicationServices.Services
                 noti.NOTI_DT_VISTA = null;
                 noti.NOTI_IN_ATIVO = 1;
                 noti.NOTI_IN_STATUS = 1;
+                noti.NOTI_IN_NIVEL = 1;
                 noti.NOTI_IN_VISTA = 0;
                 noti.NOTI_NM_TITULO = "Solicição de Alteração de Cadastro";
                 noti.USUA_CD_ID = adm.USUA_CD_ID;
@@ -654,6 +655,7 @@ namespace ApplicationServices.Services
                 noti.NOTI_IN_VISTA = 0;
                 noti.NOTI_NM_TITULO = "Alteração de Senha";
                 noti.NOTI_IN_ATIVO = 1;
+                noti.NOTI_IN_NIVEL = 1;
                 noti.NOTI_TX_TEXTO = "ATENÇÃO: A sua senha foi alterada em " + DateTime.Today.Date.ToLongDateString() + ".";
                 noti.USUA_CD_ID = usuario.USUA_CD_ID;
                 noti.NOTI_IN_STATUS = 1;

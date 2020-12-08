@@ -33,6 +33,7 @@ namespace EntitiesServices.Model
         public Nullable<System.DateTime> NOTI_DT_VALIDADE { get; set; }
         public Nullable<System.DateTime> NOTI_DT_VISTA { get; set; }
         public Nullable<int> NOTI_IN_ORIGEM { get; set; }
+        public Nullable<int> NOTI_IN_NIVEL { get; set; }
     
         public virtual ASSINANTE ASSINANTE { get; set; }
         public virtual CATEGORIA_NOTIFICACAO CATEGORIA_NOTIFICACAO { get; set; }

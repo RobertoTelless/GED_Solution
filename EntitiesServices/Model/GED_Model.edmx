@@ -255,6 +255,7 @@
           <Property Name="NOTI_DT_VALIDADE" Type="date" />
           <Property Name="NOTI_DT_VISTA" Type="datetime" />
           <Property Name="NOTI_IN_ORIGEM" Type="int" />
+          <Property Name="NOTI_IN_NIVEL" Type="int" />
         </EntityType>
         <EntityType Name="NOTIFICACAO_ANEXO">
           <Key>
@@ -1773,6 +1774,7 @@
           <NavigationProperty Name="CATEGORIA_NOTIFICACAO" Relationship="Self.FK_NOTIFICACAO_CATEGORIA_NOTIFICACAO" FromRole="NOTIFICACAO" ToRole="CATEGORIA_NOTIFICACAO" />
           <NavigationProperty Name="NOTIFICACAO_ANEXO" Relationship="Self.FK_NOTIFICACAO_ANEXO_NOTIFICACAO" FromRole="NOTIFICACAO" ToRole="NOTIFICACAO_ANEXO" />
           <NavigationProperty Name="USUARIO" Relationship="Self.FK_NOTIFICACAO_USUARIO" FromRole="NOTIFICACAO" ToRole="USUARIO" />
+          <Property Name="NOTI_IN_NIVEL" Type="Int32" />
         </EntityType>
         <EntityType Name="NOTIFICACAO_ANEXO">
           <Key>
@@ -3279,6 +3281,7 @@
           <EntitySetMapping Name="NOTIFICACAO">
             <EntityTypeMapping TypeName="GEDModel.NOTIFICACAO">
               <MappingFragment StoreEntitySet="NOTIFICACAO">
+                <ScalarProperty Name="NOTI_IN_NIVEL" ColumnName="NOTI_IN_NIVEL" />
                 <ScalarProperty Name="NOTI_CD_ID" ColumnName="NOTI_CD_ID" />
                 <ScalarProperty Name="ASSI_CD_ID" ColumnName="ASSI_CD_ID" />
                 <ScalarProperty Name="USUA_CD_ID" ColumnName="USUA_CD_ID" />

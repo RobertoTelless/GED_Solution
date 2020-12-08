@@ -630,6 +630,7 @@
     <Content Include="Imagens\1\Usuarios\1\Anexos\dentista.jpg" />
     <Content Include="Imagens\1\Usuarios\1\Fotos\FotoOficial.jpg" />
     <Content Include="Imagens\1\Usuarios\2\Fotos\Fernando.jpg" />
+    <Content Include="Imagens\Base\FotoBase.jpg" />
     <Content Include="Imagens\Base\FotoOficial.jpg" />
     <Content Include="Images\1.jpg" />
     <Content Include="Images\1.png" />
@@ -2493,6 +2494,15 @@
     <Content Include="Views\BaseAdmin\CarregarLandingPage.cshtml" />
     <Content Include="Views\BaseAdmin\CarregarBase.cshtml" />
     <Content Include="Views\BaseAdmin\CarregarDesenvolvimento.cshtml" />
+    <Content Include="Views\Administracao\MontarTelaUsuario.cshtml" />
+    <Content Include="Views\Administracao\VerUsuario.cshtml" />
+    <Content Include="Views\Administracao\IncluirUsuario.cshtml" />
+    <Content Include="Views\Administracao\EditarUsuario.cshtml" />
+    <Content Include="Views\Administracao\VerAnexoUsuario.cshtml" />
+    <Content Include="Views\Administracao\SlideShowUsuario.cshtml" />
+    <Content Include="Views\Administracao\MontarTelaLog.cshtml" />
+    <Content Include="Views\Administracao\VerLog.cshtml" />
+    <Content Include="Views\Administracao\MontarTelaUsuarioAdm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2506,7 +2516,6 @@
     <Folder Include="Imagens\1\Tarefas\2\Anexos\" />
     <Folder Include="Imagens\1\Usuarios\2\Anexos\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Administracao\" />
     <Folder Include="Views\Agenda\" />
     <Folder Include="Views\Assinante\" />
     <Folder Include="Views\Classe\" />
