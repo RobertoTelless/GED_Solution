@@ -296,6 +296,16 @@ namespace ApplicationServices.Services
                 //Acerta campos de usuários
                 usuario.USUA_DT_ALTERACAO = DateTime.Now;
                 usuario.USUA_IN_ATIVO = 1;
+                if (usuario.USUA_DT_DEMISSAO != null)
+                {
+                    usuario.USUA_IN_ATIVO = 0;
+                    usuario.USUA_IN_BLOQUEADO = 1;
+                }
+                else
+                {
+                    usuario.USUA_IN_ATIVO = 1;
+                    usuario.USUA_IN_BLOQUEADO = 0;
+                }
 
                 // Monta Log
                 LOG log = new LOG

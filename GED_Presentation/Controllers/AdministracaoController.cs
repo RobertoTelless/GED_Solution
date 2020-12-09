@@ -191,6 +191,7 @@ namespace GED_Presentation.Controllers
             Int32 idAss = (Int32)Session["IdAssinante"];
             USUARIO item = baseApp.GetItemById(id);
             objetoAntes = item;
+            Session["ModoUsuario"] = 2;
             UsuarioViewModel vm = Mapper.Map<USUARIO, UsuarioViewModel>(item);
             return View(vm);
         }
@@ -353,6 +354,7 @@ namespace GED_Presentation.Controllers
             objetoAntes = item;
             Session["Usuario"] = item;
             Session["IdUsuario"] = id;
+            Session["ModoUsuario"] = 2;
             UsuarioViewModel vm = Mapper.Map<USUARIO, UsuarioViewModel>(item);
             return View(vm);
         }
@@ -602,6 +604,7 @@ namespace GED_Presentation.Controllers
             }
             Int32 idAss = (Int32)Session["IdAssinante"];
             USUARIO_ANEXO item = baseApp.GetAnexoById(id);
+            ViewBag.Modo = (Int32)Session["ModoUsuario"];
             return View(item);
         }
 
@@ -613,6 +616,10 @@ namespace GED_Presentation.Controllers
             }
             Int32 idAss = (Int32)Session["IdAssinante"];
             Int32 idUsu = (Int32)Session["IdUsuario"];
+            if ((Int32)Session["ModoUsuario"] == 2)
+            {
+                return RedirectToAction("VerUsuario", new { id = idUsu });
+            }
             return RedirectToAction("EditarUsuario", new { id = idUsu });
         }
 
@@ -761,6 +768,7 @@ namespace GED_Presentation.Controllers
             USUARIO item = baseApp.GetItemById(idUsu);
             objetoAntes = item;
             UsuarioViewModel vm = Mapper.Map<USUARIO, UsuarioViewModel>(item);
+            ViewBag.Modo = (Int32)Session["ModoUsuario"];
             return View(vm);
         }
 
