@@ -245,7 +245,6 @@
     <Compile Include="Controllers\ControleAcessoController.cs" />
     <Compile Include="Controllers\GrupoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\NoticiaController.cs" />
     <Compile Include="Controllers\NotificacaoController.cs" />
     <Compile Include="Controllers\SubgrupoController.cs" />
@@ -2503,6 +2502,26 @@
     <Content Include="Views\Administracao\MontarTelaLog.cshtml" />
     <Content Include="Views\Administracao\VerLog.cshtml" />
     <Content Include="Views\Administracao\MontarTelaUsuarioAdm.cshtml" />
+    <Content Include="Views\Template\MontarTelaTemplate.cshtml" />
+    <Content Include="Views\Template\EditarTemplate.cshtml" />
+    <Content Include="Views\Noticia\VerNoticia.cshtml" />
+    <Content Include="Views\Noticia\IncluirComentario.cshtml" />
+    <Content Include="Views\Noticia\MontarTelaUsuario.cshtml" />
+    <Content Include="Views\Noticia\MontarTelaNoticia.cshtml" />
+    <Content Include="Views\Noticia\IncluirNoticia.cshtml" />
+    <Content Include="Views\Noticia\EditarNoticia.cshtml" />
+    <Content Include="Views\Noticia\ExcluirNoticia.cshtml" />
+    <Content Include="Views\Noticia\ReativarNoticia.cshtml" />
+    <Content Include="Views\Notificacao\VerNotificacao.cshtml" />
+    <Content Include="Views\Notificacao\MontarTelaNotificacao.cshtml" />
+    <Content Include="Views\Notificacao\VerAnexoNotificacao.cshtml" />
+    <Content Include="Views\Notificacao\MontarTelaNotificacaoGeral.cshtml" />
+    <Content Include="Views\Notificacao\IncluirNotificacao.cshtml" />
+    <Content Include="Views\Notificacao\EditarNotificacao.cshtml" />
+    <Content Include="Views\Notificacao\ExcluirNotificacao.cshtml" />
+    <Content Include="Views\Notificacao\ReativarNotificacao.cshtml" />
+    <Content Include="Views\Notificacao\VerAnexoNotificacaoGeral.cshtml" />
+    <Content Include="Views\Notificacao\SlideShowNotificacao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2522,13 +2541,10 @@
     <Folder Include="Views\Configuracao\" />
     <Folder Include="Views\Grupo\" />
     <Folder Include="Views\Log\" />
-    <Folder Include="Views\Noticia\" />
-    <Folder Include="Views\Notificacao\" />
     <Folder Include="Views\Subgrupo\" />
     <Folder Include="Views\TabelasAuxiliares\" />
     <Folder Include="Views\Tarefa\" />
     <Folder Include="Views\Telefone\" />
-    <Folder Include="Views\Template\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
