@@ -2521,7 +2521,6 @@
     <Content Include="Views\Notificacao\ExcluirNotificacao.cshtml" />
     <Content Include="Views\Notificacao\ReativarNotificacao.cshtml" />
     <Content Include="Views\Notificacao\VerAnexoNotificacaoGeral.cshtml" />
-    <Content Include="Views\Notificacao\SlideShowNotificacao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
