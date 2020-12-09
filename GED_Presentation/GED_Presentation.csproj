@@ -2521,6 +2521,14 @@
     <Content Include="Views\Notificacao\ExcluirNotificacao.cshtml" />
     <Content Include="Views\Notificacao\ReativarNotificacao.cshtml" />
     <Content Include="Views\Notificacao\VerAnexoNotificacaoGeral.cshtml" />
+    <Content Include="Views\Telefone\MontarTelaTelefone.cshtml" />
+    <Content Include="Views\Telefone\MontarTelaTelefoneContato.cshtml" />
+    <Content Include="Views\Telefone\IncluirTelefone.cshtml" />
+    <Content Include="Views\Telefone\EditarTelefone.cshtml" />
+    <Content Include="Views\Telefone\VerTelefone.cshtml" />
+    <Content Include="Views\Grupo\MontarTelaGrupo.cshtml" />
+    <Content Include="Views\Grupo\IncluirGrupo.cshtml" />
+    <Content Include="Views\Grupo\EditarGrupo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2538,12 +2546,10 @@
     <Folder Include="Views\Assinante\" />
     <Folder Include="Views\Classe\" />
     <Folder Include="Views\Configuracao\" />
-    <Folder Include="Views\Grupo\" />
     <Folder Include="Views\Log\" />
     <Folder Include="Views\Subgrupo\" />
     <Folder Include="Views\TabelasAuxiliares\" />
     <Folder Include="Views\Tarefa\" />
-    <Folder Include="Views\Telefone\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

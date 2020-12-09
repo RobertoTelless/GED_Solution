@@ -313,6 +313,24 @@ namespace GED_Presentation.App_Start {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Grupo já cadastrado.
+        /// </summary>
+        internal static string M0031 {
+            get {
+                return ResourceManager.GetString("M0031", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Impossível excluir este grupo. Existem subgrupos vinculados a ele..
+        /// </summary>
+        internal static string M0032 {
+            get {
+                return ResourceManager.GetString("M0032", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a A Senha não pode ficar em branco.
         /// </summary>
         internal static string M0073 {
