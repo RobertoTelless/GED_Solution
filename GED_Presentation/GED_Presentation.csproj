@@ -2529,6 +2529,19 @@
     <Content Include="Views\Grupo\MontarTelaGrupo.cshtml" />
     <Content Include="Views\Grupo\IncluirGrupo.cshtml" />
     <Content Include="Views\Grupo\EditarGrupo.cshtml" />
+    <Content Include="Views\Agenda\MontarTelaAgendaCalendario.cshtml" />
+    <Content Include="Views\Agenda\MontarTelaAgenda.cshtml" />
+    <Content Include="Views\Agenda\IncluirAgenda.cshtml" />
+    <Content Include="Views\Agenda\EditarAgenda.cshtml" />
+    <Content Include="Views\Agenda\VerAnexoAgenda.cshtml" />
+    <Content Include="Views\Agenda\VerTimelineAgenda.cshtml" />
+    <Content Include="Views\Tarefa\MontarTelaTarefaKanban.cshtml" />
+    <Content Include="Views\Tarefa\MontarTelaTarefa.cshtml" />
+    <Content Include="Views\Tarefa\IncluirTarefa.cshtml" />
+    <Content Include="Views\Tarefa\EditarTarefa.cshtml" />
+    <Content Include="Views\Tarefa\EditarTarefaCompartilhada.cshtml" />
+    <Content Include="Views\Tarefa\VerAnexoTarefa.cshtml" />
+    <Content Include="Views\Tarefa\IncluirAcompanhamento.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2542,14 +2555,12 @@
     <Folder Include="Imagens\1\Tarefas\2\Anexos\" />
     <Folder Include="Imagens\1\Usuarios\2\Anexos\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Agenda\" />
     <Folder Include="Views\Assinante\" />
     <Folder Include="Views\Classe\" />
     <Folder Include="Views\Configuracao\" />
     <Folder Include="Views\Log\" />
     <Folder Include="Views\Subgrupo\" />
     <Folder Include="Views\TabelasAuxiliares\" />
-    <Folder Include="Views\Tarefa\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
