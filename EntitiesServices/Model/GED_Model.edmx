@@ -180,6 +180,7 @@
           <Property Name="GRUP_IN_ATIVO" Type="int" />
           <Property Name="GRUP_NR_NUMERO" Type="varchar" MaxLength="10" />
           <Property Name="GR_NM_EXIBE" Type="varchar" MaxLength="63" StoreGeneratedPattern="Computed" />
+          <Property Name="GRUP_DS_DESCRICAO" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="LOG">
           <Key>
@@ -1688,6 +1689,7 @@
           <NavigationProperty Name="ASSINANTE" Relationship="Self.FK_GRUPO_ASSINANTE" FromRole="GRUPO" ToRole="ASSINANTE" />
           <NavigationProperty Name="TIPO_GRUPO" Relationship="Self.FK_GRUPO_TIPO_GRUPO" FromRole="GRUPO" ToRole="TIPO_GRUPO" />
           <NavigationProperty Name="SUBGRUPO" Relationship="Self.FK_SUBGRUPO_GRUPO" FromRole="GRUPO" ToRole="SUBGRUPO" />
+          <Property Name="GRUP_DS_DESCRICAO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="LOG">
           <Key>
@@ -3207,6 +3209,7 @@
           <EntitySetMapping Name="GRUPO">
             <EntityTypeMapping TypeName="GEDModel.GRUPO">
               <MappingFragment StoreEntitySet="GRUPO">
+                <ScalarProperty Name="GRUP_DS_DESCRICAO" ColumnName="GRUP_DS_DESCRICAO" />
                 <ScalarProperty Name="GRUP_CD_ID" ColumnName="GRUP_CD_ID" />
                 <ScalarProperty Name="ASSI_CD_ID" ColumnName="ASSI_CD_ID" />
                 <ScalarProperty Name="TIGR_CD_ID" ColumnName="TIGR_CD_ID" />

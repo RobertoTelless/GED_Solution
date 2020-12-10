@@ -27,6 +27,7 @@ namespace EntitiesServices.Model
         public Nullable<int> GRUP_IN_ATIVO { get; set; }
         public string GRUP_NR_NUMERO { get; set; }
         public string GR_NM_EXIBE { get; set; }
+        public string GRUP_DS_DESCRICAO { get; set; }
     
         public virtual ASSINANTE ASSINANTE { get; set; }
         public virtual TIPO_GRUPO TIPO_GRUPO { get; set; }
