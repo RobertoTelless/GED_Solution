@@ -2542,6 +2542,15 @@
     <Content Include="Views\Tarefa\EditarTarefaCompartilhada.cshtml" />
     <Content Include="Views\Tarefa\VerAnexoTarefa.cshtml" />
     <Content Include="Views\Tarefa\IncluirAcompanhamento.cshtml" />
+    <Content Include="Views\Subgrupo\MontarTelaSubGrupo.cshtml" />
+    <Content Include="Views\Subgrupo\IncluirSubGrupo.cshtml" />
+    <Content Include="Views\Subgrupo\EditarSubGrupo.cshtml" />
+    <Content Include="Views\TabelasAuxiliares\MontarTelaCatAgenda.cshtml" />
+    <Content Include="Views\TabelasAuxiliares\IncluirCatAgenda.cshtml" />
+    <Content Include="Views\TabelasAuxiliares\EditarCatAgenda.cshtml" />
+    <Content Include="Views\TabelasAuxiliares\MontarTelaCatNotificacao.cshtml" />
+    <Content Include="Views\TabelasAuxiliares\IncluirCatNotificacao.cshtml" />
+    <Content Include="Views\TabelasAuxiliares\EditarCatNotificacao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2559,8 +2568,6 @@
     <Folder Include="Views\Classe\" />
     <Folder Include="Views\Configuracao\" />
     <Folder Include="Views\Log\" />
-    <Folder Include="Views\Subgrupo\" />
-    <Folder Include="Views\TabelasAuxiliares\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

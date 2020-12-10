@@ -207,6 +207,21 @@
   <data name="M0032" xml:space="preserve">
     <value>Impossível excluir este grupo. Existem subgrupos vinculados a ele.</value>
   </data>
+  <data name="M0033" xml:space="preserve">
+    <value>Subgrupo já cadastrado</value>
+  </data>
+  <data name="M0034" xml:space="preserve">
+    <value>Impossível excluir este subgrupo. Existem registros vinculados a ele.</value>
+  </data>
+  <data name="M0035" xml:space="preserve">
+    <value>Categoria de agenda já cadastrada</value>
+  </data>
+  <data name="M0036" xml:space="preserve">
+    <value>Impossível excluir este item. Ele está vinculado a outros registros</value>
+  </data>
+  <data name="M0037" xml:space="preserve">
+    <value>Categoria de notificação já cadastrada</value>
+  </data>
   <data name="M0073" xml:space="preserve">
     <value>A Senha não pode ficar em branco</value>
   </data>
